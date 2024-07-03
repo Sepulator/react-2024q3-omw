@@ -6,7 +6,7 @@ import './header.css';
 export class Header extends Component {
   render(): ReactNode {
     return (
-      <header>
+      <header className="mb-md">
         <a href="https://rickandmortyapi.com/">
           <img src={logo} alt="Rick and Morty logo" className="logo" />
         </a>
