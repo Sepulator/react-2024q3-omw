@@ -1,15 +1,23 @@
 import { Component } from 'react';
-import { Header } from './components/header/header';
-import { CardItem } from './components/card-item/card-item';
+
+import Header from './components/header';
+import CardList from './components/card-list';
 
 class App extends Component {
+  state = {
+    query: '',
+  };
+
+  onSearchChange = (query: string) => {
+    this.setState({ query });
+    console.log(query);
+  };
+
   render() {
     return (
       <>
-        <Header />
-        <main className="container grid">
-          <CardItem />
-        </main>
+        <Header onSearchChange={this.onSearchChange} />
+        <CardList query={this.state.query} />
       </>
     );
   }
