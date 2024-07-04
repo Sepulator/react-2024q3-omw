@@ -6,7 +6,7 @@ export class CardItem extends Component {
     return (
       <div className="card">
         <img
-          src="./src/assets/logo.png"
+          src="./src/assets/1.jpeg"
           alt="Ricky and Morty"
           className="card-img"
         />
@@ -26,11 +26,6 @@ export class CardItem extends Component {
             <li className="card-attribute">
               <span>
                 Gender: <strong>Male</strong>
-              </span>
-            </li>
-            <li className="card-attribute">
-              <span>
-                From: <strong>Earth</strong>
               </span>
             </li>
           </ul>

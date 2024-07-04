@@ -3,6 +3,8 @@
   border-radius: 11px;
   overflow: hidden;
   transition: all 0.4s;
+  display: flex;
+  flex-direction: row;
 }
 
 .card:hover {
@@ -11,10 +13,11 @@
 }
 
 .card-img {
-  width: 100%;
+  width: 40%;
 }
 
 .card-content {
+  width: 60%;
   padding: 3.2rem 2.4rem 2.4rem 2.4rem;
 }
 
