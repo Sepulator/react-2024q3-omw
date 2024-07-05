@@ -91,4 +91,5 @@ export interface Info<T> {
     prev: string | null;
   };
   results?: T;
+  error?: string;
 }

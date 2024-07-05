@@ -15,7 +15,6 @@ class App extends Component {
   render() {
     return (
       <>
-        {' '}
         <Header onSearchChange={this.onSearchChange} />
         <CardList query={this.state.query} />
       </>

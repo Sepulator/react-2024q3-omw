@@ -8,11 +8,11 @@ type Props = {
 
 export class CardItem extends Component<Props, unknown> {
   render() {
-    const { name, status, species, location } = this.props.character;
+    const { image, name, status, species, location } = this.props.character;
 
     return (
       <div className="card">
-        <img src="./src/assets/1.jpeg" alt={name} className="card-img" />
+        <img src={image} alt={name} className="card-img" />
         <div className="card-content">
           <div className="card-title">{name}</div>
           <ul className="card-attributes">
