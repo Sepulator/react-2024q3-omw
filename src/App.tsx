@@ -10,12 +10,12 @@ class App extends Component {
 
   onSearchChange = (query: string) => {
     this.setState({ query });
-    console.log(query);
   };
 
   render() {
     return (
       <>
+        {' '}
         <Header onSearchChange={this.onSearchChange} />
         <CardList query={this.state.query} />
       </>

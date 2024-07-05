@@ -12,11 +12,7 @@ export class CardItem extends Component<Props, unknown> {
 
     return (
       <div className="card">
-        <img
-          src="./src/assets/1.jpeg"
-          alt="Ricky and Morty"
-          className="card-img"
-        />
+        <img src="./src/assets/1.jpeg" alt={name} className="card-img" />
         <div className="card-content">
           <div className="card-title">{name}</div>
           <ul className="card-attributes">

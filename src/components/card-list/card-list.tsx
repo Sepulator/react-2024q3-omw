@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import CardItem from '@components/card-item';
 import './card-list.css';
+import CardItem from '@components/card-item';
 import { ApiService } from '@/services/api-service';
 import { Character, Info } from '@/interfaces';
 import { mockCharacters } from '@/assets/mock';
@@ -20,20 +20,23 @@ export class CardList extends Component<Props, State> {
   };
 
   componentDidMount(): void {
-    // this.apiService.getAllCharacters().then((data) => {
-    //   this.setState({ data });
-    // });
+    // this.apiService.getAllCharacters().then((data) => this.setState({ data }));
 
     this.setState({ data: mockCharacters });
   }
 
-  // componentDidUpdate(
-  //   prevProps: Readonly<Props>,
-  //   prevState: Readonly<State>
-  // ): void {
-  //   if (this.props.query !== prevProps.query) {
-  //   }
-  // }
+  componentDidUpdate(prevProps: Readonly<Props>): void {
+    if (this.props.query !== prevProps.query) {
+      // this.apiService
+      //   .getFilteredCharacters(this.props.query)
+      //   .then((data) => this.setState({ data }));
+      const filtered = this.filterItems(
+        mockCharacters.results!,
+        this.props.query
+      );
+      this.setState({ data: { results: filtered } });
+    }
+  }
 
   renderItems(arr: Array<Character>) {
     return arr.map((character) => {
@@ -58,7 +61,6 @@ export class CardList extends Component<Props, State> {
     }
 
     const items = this.renderItems(characters);
-
     return <main className="container grid">{items}</main>;
   }
 }
