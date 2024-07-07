@@ -2,6 +2,7 @@ import { Component } from 'react';
 
 import Header from './components/header';
 import CardList from './components/card-list';
+import Footer from './components/footer';
 
 class App extends Component {
   state = {
@@ -17,6 +18,7 @@ class App extends Component {
       <>
         <Header onSearchChange={this.onSearchChange} />
         <CardList query={this.state.query} />
+        <Footer />
       </>
     );
   }

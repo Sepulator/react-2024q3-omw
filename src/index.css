@@ -67,6 +67,10 @@ h1 {
   margin-bottom: 6.4rem;
 }
 
+.mt-md {
+  margin-top: 6.4rem;
+}
+
 .btn {
   padding: 0.6em 1.2em;
   font-size: 2rem;
@@ -96,14 +100,14 @@ h1 {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@keyframes logo-spin {
+/* @keyframes logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
