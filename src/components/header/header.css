@@ -6,3 +6,7 @@ header {
   align-items: center;
   padding: 0 9.6rem;
 }
+
+header a {
+  display: inline-block;
+}

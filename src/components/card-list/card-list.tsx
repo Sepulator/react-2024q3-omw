@@ -47,21 +47,27 @@ export class CardList extends Component<Props, State> {
 
     if (error) {
       return (
-        <div className="center">
+        <main className="center">
           <h1>{error}</h1>
-        </div>
+        </main>
       );
     }
 
     if (!results || this.state.loading) {
       return (
-        <div className="center">
-          <div className="loader"></div>
-        </div>
+        <main>
+          <div className="center">
+            <div className="loader"></div>
+          </div>
+        </main>
       );
     }
 
     const items = this.renderItems(results);
-    return <main className="container grid">{items}</main>;
+    return (
+      <main>
+        <div className="container grid">{items}</div>
+      </main>
+    );
   }
 }

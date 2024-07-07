@@ -8,28 +8,27 @@ type Props = {
 
 export class CardItem extends Component<Props, unknown> {
   render() {
-    const { image, name, status, species, location } = this.props.character;
+    const { image, name, status, gender, species, location } =
+      this.props.character;
 
     return (
       <div className="card">
         <img src={image} alt={name} className="card-img" />
         <div className="card-content">
-          <div className="card-title">{name}</div>
           <ul className="card-attributes">
             <li className="card-attribute">
-              <span>
-                Status: <strong>{status}</strong>
-              </span>
+              <p className="card-title">{name}</p>
+              <p>
+                {status} &mdash; {species}
+              </p>
             </li>
             <li className="card-attribute">
-              <span>
-                Species: <strong>{species}</strong>
-              </span>
+              <p className="subtitle">Gender:</p>
+              <p>{gender}</p>
             </li>
             <li className="card-attribute">
-              <span>
-                Origin: <strong>{location.name}</strong>
-              </span>
+              <p className="subtitle">Last known location:</p>
+              <p>{location.name}</p>
             </li>
           </ul>
         </div>

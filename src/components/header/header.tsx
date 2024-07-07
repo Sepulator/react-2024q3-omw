@@ -12,9 +12,11 @@ export class Header extends Component<Props> {
   render() {
     return (
       <header className="mb-md">
-        <a href="https://rickandmortyapi.com/">
-          <img src={logo} alt="Rick and Morty logo" className="logo" />
-        </a>
+        <div>
+          <a href="https://rickandmortyapi.com/">
+            <img src={logo} alt="Rick and Morty logo" className="logo" />
+          </a>
+        </div>
         <SearchForm onSearchChange={this.props.onSearchChange} />
       </header>
     );

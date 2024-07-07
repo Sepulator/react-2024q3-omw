@@ -32,7 +32,11 @@ html {
 
 body {
   min-width: 320px;
-  min-height: 100vh;
+  height: 100vh;
+}
+
+main {
+  min-height: 54vh;
 }
 
 a {
