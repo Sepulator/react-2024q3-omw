@@ -1,54 +1,35 @@
-import { ChangeEvent, Component, createRef, RefObject } from 'react';
+import { ChangeEvent, useEffect, useRef } from 'react';
 import './search-form.css';
+import { useLocalStorage } from '@/hooks/use-local-storage';
 
 type Props = {
   onSearchChange: (query: string) => void;
 };
 
-export class SearchForm extends Component<Props> {
-  input: RefObject<HTMLInputElement>;
+export function SearchForm({ onSearchChange }: Props) {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [query, setQuery] = useLocalStorage();
 
-  constructor(props: Props) {
-    super(props);
-    this.input = createRef<HTMLInputElement>();
-  }
+  useEffect(() => {
+    inputRef.current!.value = query;
+  });
 
-  onSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+  const onSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const query = e.target.text.value.toLowerCase().trim();
-    this.props.onSearchChange(query);
+    const value = e.target.text.value.toLowerCase().trim() as string;
+    onSearchChange(value);
+    setQuery(value);
   };
 
-  getLocalStorage = () =>
-    (this.input.current!.value = localStorage.getItem('query-text') || '');
-
-  setLocalStorage = () =>
-    localStorage.setItem('query-text', this.input.current!.value);
-
-  componentDidMount() {
-    this.getLocalStorage();
-    window.addEventListener('beforeunload', this.setLocalStorage);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('beforeunload', this.setLocalStorage);
-  }
-
-  onInput = (e: ChangeEvent<HTMLInputElement>) => {
-    this.setState({ value: e.target.value });
-  };
-
-  render() {
-    return (
-      <form className="search-form" onSubmit={this.onSubmit}>
-        <input
-          type="text"
-          name="text"
-          placeholder="Type name from Rick and Morty"
-          ref={this.input}
-        />
-        <button className="btn">Search</button>
-      </form>
-    );
-  }
+  return (
+    <form className="search-form" onSubmit={onSubmit}>
+      <input
+        type="text"
+        name="text"
+        placeholder="Type name from Rick and Morty"
+        ref={inputRef}
+      />
+      <button className="btn">Search</button>
+    </form>
+  );
 }

@@ -1,14 +1,10 @@
-import { Character, CharacterFilter, Endpoints, Info } from '@/interfaces';
+import { Character, Endpoints, Info } from '@/interfaces';
 
 export class ApiService {
   urls: Endpoints = {
     character: '/character/',
     episode: '/episode/',
     location: '/location/',
-  };
-
-  characterTags: CharacterFilter = {
-    name: '',
   };
 
   apiBase = 'https://rickandmortyapi.com/api';
