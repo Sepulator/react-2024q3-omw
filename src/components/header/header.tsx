@@ -9,7 +9,7 @@ type Props = {
 
 export function Header({ onSearchChange }: Props) {
   return (
-    <header className="mb-md">
+    <header>
       <div>
         <a href="https://rickandmortyapi.com/">
           <img src={logo} alt="Rick and Morty logo" className="logo" />

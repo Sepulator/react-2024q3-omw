@@ -11,23 +11,22 @@ type Props = {
 
 type State = {
   data: Info<Array<Character>>;
-  loading: boolean;
 };
 
 export function CardList({ query }: Props) {
-  const [state, setState] = useState<State>({ data: {}, loading: false });
+  const [state, setState] = useState<State>({ data: {} });
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getFilteredCharacters(query).then((data) =>
-      setState({ data, loading: false })
-    );
-  }, [query]);
+    isLoading || setIsLoading(true);
+    getFilteredCharacters(query).then((data) => setState({ data }));
+    setIsLoading(false);
+  }, [isLoading, query]);
 
-  const renderItems = (arr: Array<Character>) => {
-    return arr.map((character) => {
-      return <CardItem character={character} key={character.id} />;
-    });
-  };
+  const renderItems = (arr: Array<Character>) =>
+    arr.map((character) => (
+      <CardItem character={character} key={character.id} />
+    ));
 
   const { error, results } = state.data;
 
@@ -39,7 +38,7 @@ export function CardList({ query }: Props) {
     );
   }
 
-  if (!results || state.loading) {
+  if (!results || isLoading) {
     return (
       <main>
         <div className="center">

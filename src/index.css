@@ -36,7 +36,8 @@ body {
 }
 
 main {
-  min-height: calc(100vh - (9.6rem + 6.4rem) * 2);
+  min-height: calc(100vh - 9.6rem * 2);
+  padding: 6.4rem 0;
 }
 
 a {

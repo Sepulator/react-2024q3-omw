@@ -7,7 +7,7 @@ export function Footer() {
   const date = new Date().getFullYear();
 
   return (
-    <footer className="mt-md">
+    <footer>
       <a href="https://rs.school/">
         <img src={rs_logo} alt="RS School" className="logo" />
       </a>

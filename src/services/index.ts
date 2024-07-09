@@ -1,3 +1,7 @@
-import { ApiService } from './api-service';
+import {
+  getAllCharacters,
+  getCharacter,
+  getFilteredCharacters,
+} from './api-service';
 
-export default ApiService;
+export { getAllCharacters, getFilteredCharacters, getCharacter };
