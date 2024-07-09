@@ -36,7 +36,7 @@ body {
 }
 
 main {
-  min-height: 54vh;
+  min-height: calc(100vh - (9.6rem + 6.4rem) * 2);
 }
 
 a {

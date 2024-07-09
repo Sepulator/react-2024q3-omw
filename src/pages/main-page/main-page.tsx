@@ -3,6 +3,7 @@ import CardList from '@/components/card-list';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 import './main-page.css';
+import { Outlet } from 'react-router-dom';
 
 export function MainPage() {
   const [query, setQuery] = useState('');
@@ -15,6 +16,7 @@ export function MainPage() {
     <>
       <Header onSearchChange={onSearchChange} />
       <CardList query={query} />
+      <Outlet />
       <Footer />
     </>
   );
