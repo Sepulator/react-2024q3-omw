@@ -6,18 +6,24 @@ module.exports = {
       version: 'detect',
     },
   },
+  plugins: [
+    '@typescript-eslint',
+    'react-compiler',
+    'jsx-a11y',
+    'react',
+    'react-hooks',
+    'react-refresh',
+  ],
   extends: [
+    'plugin:@typescript-eslint/recommended',
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'react-compiler',
     'prettier',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh'],
   rules: {
     'react-compiler/react-compiler': 'error',
     'react-refresh/only-export-components': [
