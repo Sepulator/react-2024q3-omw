@@ -35,6 +35,15 @@ export class ErrorBoundary extends Component<Props, State> {
             <br />
             {errorInfo?.componentStack}
           </details>
+          <button
+            onClick={() => {
+              this.setState({ hasError: false });
+              window.location.reload();
+            }}
+            className="btn btn-round mt-md"
+          >
+            Window reload
+          </button>
         </main>
       );
 
