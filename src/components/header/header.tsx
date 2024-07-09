@@ -8,8 +8,17 @@ type Props = {
   onSearchChange: (query: string) => void;
 };
 
-export class Header extends Component<Props> {
+type State = {
+  isThrowError: boolean;
+};
+
+export class Header extends Component<Props, State> {
+  state: State = {
+    isThrowError: false,
+  };
   render() {
+    if (this.state.isThrowError) throw new Error('Check Error Boundary');
+
     return (
       <header className="mb-md">
         <div>
@@ -18,6 +27,15 @@ export class Header extends Component<Props> {
           </a>
         </div>
         <SearchForm onSearchChange={this.props.onSearchChange} />
+        <button
+          style={{ width: 'fit-content', justifySelf: 'end' }}
+          className="btn btn-round"
+          onClick={() => {
+            this.setState({ isThrowError: true });
+          }}
+        >
+          Throw Error
+        </button>
       </header>
     );
   }

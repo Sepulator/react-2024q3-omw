@@ -87,6 +87,10 @@ h1 {
   transition: border-color 0.25s;
 }
 
+.btn-round {
+  border-radius: 9px;
+}
+
 .btn:hover,
 .btn:active {
   background-color: #cf711f;

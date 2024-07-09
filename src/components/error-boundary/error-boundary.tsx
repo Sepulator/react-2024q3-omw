@@ -28,7 +28,7 @@ export class ErrorBoundary extends Component<Props, State> {
     const { error, errorInfo, hasError } = this.state;
     if (hasError)
       return (
-        <main style={{ textAlign: 'center', marginBottom: '80px' }}>
+        <main style={{ textAlign: 'center', marginTop: '80px' }}>
           <h1>Something went wrong.</h1>
           <details style={{ whiteSpace: 'pre-wrap', fontSize: '16px' }}>
             {error && error.toString()}

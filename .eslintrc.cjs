@@ -6,6 +6,7 @@ module.exports = {
       version: 'detect',
     },
   },
+  plugins: ['react-refresh', 'react-compiler'],
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
@@ -16,8 +17,8 @@ module.exports = {
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh'],
   rules: {
+    'react-compiler/react-compiler': 'error',
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
