@@ -1,11 +1,39 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-export function useLocalStorage(key = 'query-text', initState = '') {
-  const [query, setQuery] = useState(localStorage.getItem(key) ?? initState);
+export function useLocalStorage<T>(key = 'query-text', initState: T | '' = '') {
+  const inputRef = useRef<T>();
+
+  const [storedValue, setStoredValue] = useState<T>(() => {
+    try {
+      const value = window.localStorage.getItem(key);
+
+      if (value) {
+        return JSON.parse(value);
+      } else {
+        window.localStorage.setItem(key, JSON.stringify(initState));
+        return initState;
+      }
+    } catch {
+      return initState;
+    }
+  });
 
   useEffect(() => {
-    localStorage.setItem(key, query);
-  }, [query, key]);
+    inputRef.current = storedValue;
+  }, [storedValue]);
 
-  return [query, setQuery] as const;
+  useEffect(() => {
+    const setLocalStorage = () =>
+      window.localStorage.setItem(key, JSON.stringify(inputRef.current));
+
+    window.addEventListener('beforeunload', setLocalStorage);
+
+    return () => window.removeEventListener('beforeunload', setLocalStorage);
+  }, [key]);
+
+  const setValue = (newValue: T) => {
+    setStoredValue(newValue);
+  };
+
+  return [storedValue, setValue] as const;
 }

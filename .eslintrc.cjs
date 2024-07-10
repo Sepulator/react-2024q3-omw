@@ -10,7 +10,6 @@ module.exports = {
     '@typescript-eslint',
     'react-compiler',
     'jsx-a11y',
-    'react',
     'react-hooks',
     'react-refresh',
   ],
