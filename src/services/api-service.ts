@@ -20,7 +20,7 @@ export class ApiService {
     //   throw new Error(`Could not fetch ${url}, status ${res.status}`);
     // }
 
-    return await res.json();
+    return (await res.json()) as T;
   }
 
   getAllCharacters = async () =>

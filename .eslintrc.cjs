@@ -16,14 +16,18 @@ module.exports = {
   ],
   extends: [
     'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
-    'plugin:@typescript-eslint/recommended',
     'prettier',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', '*.config.ts'],
   parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: 'tsconfig.app.json',
+  },
   rules: {
     'react-compiler/react-compiler': 'error',
     '@typescript-eslint/no-explicit-any': 'error',

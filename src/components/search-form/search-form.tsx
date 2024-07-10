@@ -6,24 +6,24 @@ type Props = {
 };
 
 export class SearchForm extends Component<Props> {
-  input: RefObject<HTMLInputElement>;
+  inputRef: RefObject<HTMLInputElement>;
 
   constructor(props: Props) {
     super(props);
-    this.input = createRef<HTMLInputElement>();
+    this.inputRef = createRef<HTMLInputElement>();
   }
 
   onSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const query = e.target.text.value.toLowerCase().trim();
-    this.props.onSearchChange(query);
+    const query = this.inputRef.current!.value;
+    this.props.onSearchChange(query.toLowerCase().trim());
   };
 
   getLocalStorage = () =>
-    (this.input.current!.value = localStorage.getItem('query-text') || '');
+    (this.inputRef.current!.value = localStorage.getItem('query-text') || '');
 
   setLocalStorage = () =>
-    localStorage.setItem('query-text', this.input.current!.value);
+    localStorage.setItem('query-text', this.inputRef.current!.value);
 
   componentDidMount() {
     this.getLocalStorage();
@@ -45,7 +45,7 @@ export class SearchForm extends Component<Props> {
           type="text"
           name="text"
           placeholder="Type name from Rick and Morty"
-          ref={this.input}
+          ref={this.inputRef}
         />
         <button className="btn">Search</button>
       </form>

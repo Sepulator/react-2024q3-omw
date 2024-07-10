@@ -21,16 +21,16 @@ export class CardList extends Component<Props, State> {
     loading: true,
   };
 
-  componentDidMount(): void {
-    this.apiService
+  async componentDidMount() {
+    await this.apiService
       .getAllCharacters()
       .then((data) => this.setState({ data, loading: false }));
   }
 
-  componentDidUpdate(prevProps: Readonly<Props>): void {
+  async componentDidUpdate(prevProps: Readonly<Props>) {
     if (this.props.query !== prevProps.query) {
       this.setState({ loading: true });
-      this.apiService
+      await this.apiService
         .getFilteredCharacters(this.props.query)
         .then((data) => this.setState({ data, loading: false }));
     }
