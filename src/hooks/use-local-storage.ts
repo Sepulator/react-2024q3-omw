@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-export function useLocalStorage<T>(key = 'query-text', initState: T | '' = '') {
+export function useLocalStorage<T>(initState: T, key = 'query-text') {
   const inputRef = useRef<T>();
 
   const [storedValue, setStoredValue] = useState<T>(() => {
@@ -8,7 +8,7 @@ export function useLocalStorage<T>(key = 'query-text', initState: T | '' = '') {
       const value = window.localStorage.getItem(key);
 
       if (value) {
-        return JSON.parse(value);
+        return JSON.parse(value) as T;
       } else {
         window.localStorage.setItem(key, JSON.stringify(initState));
         return initState;

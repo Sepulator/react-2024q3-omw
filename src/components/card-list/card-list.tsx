@@ -1,57 +1,45 @@
-import { useEffect, useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
+
+import { Character, Info } from '@/interfaces';
+import CardItem from '@components/card-item';
 import './card-list.css';
 
-import CardItem from '@components/card-item';
-import { getFilteredCharacters } from '@/services/api-service';
-import { Character, Info } from '@/interfaces';
-
-type Props = {
-  query: string;
-};
-
-type State = {
-  data: Info<Array<Character>>;
-};
-
-export function CardList({ query }: Props) {
-  const [state, setState] = useState<State>({ data: {} });
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    isLoading || setIsLoading(true);
-    getFilteredCharacters(query).then((data) => setState({ data }));
-    setIsLoading(false);
-  }, [isLoading, query]);
+export function CardList() {
+  const characters = useLoaderData() as Info<Array<Character>>;
 
   const renderItems = (arr: Array<Character>) =>
     arr.map((character) => (
       <CardItem character={character} key={character.id} />
     ));
 
-  const { error, results } = state.data;
+  const { error, results } = characters;
 
-  if (error) {
-    return (
-      <main className="center">
-        <h1>{error}</h1>
-      </main>
-    );
-  }
+  error && <RenderError error={error} />;
 
-  if (!results || isLoading) {
-    return (
-      <main>
-        <div className="center">
-          <div className="loader"></div>
-        </div>
-      </main>
-    );
-  }
+  if (!results) return <LoaderSpinner />;
 
   const items = renderItems(results);
   return (
     <main>
       <div className="container grid">{items}</div>
+    </main>
+  );
+}
+
+function RenderError({ error }: { error: string }) {
+  return (
+    <main className="center">
+      <h1>{error}</h1>
+    </main>
+  );
+}
+
+function LoaderSpinner() {
+  return (
+    <main>
+      <div className="center">
+        <div className="loader"></div>
+      </div>
     </main>
   );
 }

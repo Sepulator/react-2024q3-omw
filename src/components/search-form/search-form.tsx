@@ -1,18 +1,15 @@
 import { ChangeEvent } from 'react';
 import './search-form.css';
 import { useLocalStorage } from '@/hooks/use-local-storage';
+import { useSearchParams } from 'react-router-dom';
 
-type Props = {
-  onSearchChange: (query: string) => void;
-};
-
-export function SearchForm({ onSearchChange }: Props) {
-  const [query, setQuery] = useLocalStorage<string>();
+export function SearchForm() {
+  const [_, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useLocalStorage<string>('');
 
   const onSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const value = e.target.text.value.toLowerCase().trim() as string;
-    onSearchChange(value);
+    setSearchParams({ name: query });
   };
 
   return (
@@ -22,7 +19,9 @@ export function SearchForm({ onSearchChange }: Props) {
         name="text"
         placeholder="Type name from Rick and Morty"
         value={query}
-        onInput={(e: ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
+        onInput={(e: ChangeEvent<HTMLInputElement>) =>
+          setQuery(e.target.value.toLowerCase().trim())
+        }
       />
       <button className="btn">Search</button>
     </form>

@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router-dom';
-import './card-item-detail.css';
+import '../card-item/card-item.css';
 import { Character } from '@/interfaces';
 
 export function CardItemDetail() {

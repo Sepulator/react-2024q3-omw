@@ -1,31 +1,51 @@
+import type { Params } from 'react-router-dom';
 import { Character, Endpoints, Info } from '@/interfaces';
-import { LoaderFunctionArgs } from 'react-router-dom';
 
-const urls: Endpoints = {
+type IdParams = {
+  params: Params<'id'>;
+};
+
+export const endpoints: Endpoints = {
   character: '/character/',
   episode: '/episode/',
   location: '/location/',
 };
 
-const apiBase = 'https://rickandmortyapi.com/api';
+export const apiBase = 'https://rickandmortyapi.com/api';
 
 const getRes = async <T>(url: string): Promise<T> => {
   const res = await fetch(`${apiBase}${url}`);
 
-  // if (!res.ok) {
-  //   throw new Error(`Could not fetch ${url}, status ${res.status}`);
-  // }
-
-  return await res.json();
+  return (await res.json()) as T;
 };
 
-const getAllCharacters = async () =>
-  await getRes<Info<Array<Character>>>(urls.character);
+const allCharactersLoader = async () =>
+  await getRes<Info<Array<Character>>>(endpoints.character);
 
-const getCharacter = async ({ params }: LoaderFunctionArgs) =>
-  await getRes<Character>(`${urls.character}${params}`);
+const characterLoader = async ({ params }: IdParams) => {
+  if (!params.id) {
+    throw new Error('Expected params.id');
+  }
 
-const getFilteredCharacters = async (charName: string) =>
-  await getRes<Info<Array<Character>>>(`${urls.character}?name=${charName}`);
+  const character = await getRes<Character>(
+    `${endpoints.character}${params.id}`
+  );
 
-export { getAllCharacters, getCharacter, getFilteredCharacters };
+  if (!character) {
+    throw new Error(
+      `Uh oh, I couldn't find a character with id "${params.id}"`
+    );
+  }
+  return character;
+};
+
+const getFilteredCharacters = async ({ request }: { request: Request }) => {
+  const url = new URL(request.url);
+  const searchName = url.searchParams.get('name') || '';
+
+  return await getRes<Info<Array<Character>>>(
+    `${endpoints.character}?name=${searchName}`
+  );
+};
+
+export { allCharactersLoader, characterLoader, getFilteredCharacters };
