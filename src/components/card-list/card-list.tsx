@@ -1,27 +1,38 @@
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigation } from 'react-router-dom';
 
-import { Character, Info } from '@/interfaces';
+import { Character } from '@/interfaces';
 import CardItem from '@components/card-item';
+import { LoaderData } from '@/services/api-service';
 import './card-list.css';
+import chevronLeft from '@assets/chevron-left.svg';
+import chevronLight from '@assets/chevron-right.svg';
 
 export function CardList() {
-  const characters = useLoaderData() as Info<Array<Character>>;
+  const { info } = useLoaderData() as LoaderData;
+  const navigation = useNavigation();
+  const { error, results } = info;
 
   const renderItems = (arr: Array<Character>) =>
     arr.map((character) => (
       <CardItem character={character} key={character.id} />
     ));
 
-  const { error, results } = characters;
-
-  error && <RenderError error={error} />;
-
-  if (!results) return <LoaderSpinner />;
+  if (error) return <RenderError error={error} />;
+  if (!results || navigation.state === 'loading') return <LoaderSpinner />;
 
   const items = renderItems(results);
+
   return (
     <main>
-      <div className="container grid">{items}</div>
+      <div className="container grid mb-sm">{items}</div>
+      <div className="pagination-block">
+        <button className="btn">
+          <img src={chevronLeft} alt="chevron left" className="logo" />
+        </button>
+        <button className="btn">
+          <img src={chevronLight} alt="chevron right" className="logo" />
+        </button>
+      </div>
     </main>
   );
 }

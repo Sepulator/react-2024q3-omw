@@ -6,10 +6,7 @@ import './index.css';
 import ErrorBoundary from './components/error-boundary/index.ts';
 import MainPage from './pages/main-page/index.ts';
 import ErrorPage from './pages/error-page/index.ts';
-import {
-  characterLoader,
-  getFilteredCharacters,
-} from './services/api-service.ts';
+import { characterLoader, charactersLoader } from './services/api-service.ts';
 import CardItemDetail from './components/card-item-detail/index.ts';
 
 const router = createBrowserRouter([
@@ -17,7 +14,7 @@ const router = createBrowserRouter([
     path: '/',
     element: <MainPage />,
     errorElement: <ErrorPage />,
-    loader: getFilteredCharacters,
+    loader: charactersLoader,
     children: [
       {
         path: 'character/:characterId',
