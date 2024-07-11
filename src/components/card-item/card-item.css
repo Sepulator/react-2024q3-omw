@@ -1,19 +1,25 @@
 .card {
+  display: flex;
+  flex-direction: row;
   box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
   border-radius: 11px;
   overflow: hidden;
   transition: all 0.4s;
-  display: flex;
-  flex-direction: row;
 }
 
 .card:hover {
-  transform: translateY(-1.2rem);
-  box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  box-shadow: 0 2.4rem 4.8rem rgba(121, 39, 39, 0.15);
 }
 
 .card-img {
   width: 44%;
+}
+
+.card-small {
+  padding: 2rem 2rem;
+  border: none;
+  background-color: #fff;
 }
 
 .card-content {

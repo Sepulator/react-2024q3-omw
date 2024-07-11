@@ -63,7 +63,7 @@ h1 {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   column-gap: 3.2rem;
   row-gap: 6.4rem;
 }

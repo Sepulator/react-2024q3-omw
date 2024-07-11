@@ -1,11 +1,9 @@
+import { useLoaderData } from 'react-router-dom';
 import './card-item.css';
 import { Character } from '@/interfaces';
 
-type Props = {
-  character: Character;
-};
-
-export function CardItem({ character }: Props) {
+export function CardItem() {
+  const character = useLoaderData() as Character;
   const { image, name, status, gender, species, location } = character;
 
   return (

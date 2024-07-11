@@ -2,7 +2,7 @@ import type { Params } from 'react-router-dom';
 import { Character, Endpoints, Info } from '@/interfaces';
 
 type IdParams = {
-  params: Params<'id'>;
+  params: Params<'characterId'>;
 };
 
 interface LoaderData {
@@ -25,27 +25,23 @@ const getRes = async <T>(url: string): Promise<T> => {
 };
 
 const characterLoader = async ({ params }: IdParams) => {
-  if (!params.id) {
+  if (!params.characterId) {
     throw new Error('Expected params.id');
   }
 
   const character = await getRes<Character>(
-    `${endpoints.character}${params.id}`
+    `${endpoints.character}${params.characterId}`
   );
 
   if (!character) {
     throw new Error(
-      `Uh oh, I couldn't find a character with id "${params.id}"`
+      `Uh oh, I couldn't find a character with id "${params.characterId}"`
     );
   }
   return character;
 };
 
-const charactersLoader = async ({
-  request,
-}: {
-  request: Request;
-}): Promise<LoaderData> => {
+const charactersLoader = async ({ request }: { request: Request }) => {
   const url = new URL(request.url);
   const searchName = url.searchParams.get('name')?.toLowerCase().trim() || '';
 

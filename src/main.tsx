@@ -1,13 +1,13 @@
 import React from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import './index.css';
 import ErrorBoundary from './components/error-boundary/index.ts';
 import MainPage from './pages/main-page/index.ts';
 import ErrorPage from './pages/error-page/index.ts';
 import { characterLoader, charactersLoader } from './services/api-service.ts';
-import CardItemDetail from './components/card-item-detail/index.ts';
+import CardItem from './components/card-item/index.ts';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'character/:characterId',
-        element: <CardItemDetail />,
+        element: <CardItem />,
         loader: characterLoader,
       },
     ],
