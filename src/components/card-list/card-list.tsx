@@ -12,19 +12,11 @@ export function CardList() {
 
   const { error, results } = info;
 
-  const renderItems = (arr: Array<Character>) =>
-    arr.map((character) => (
-      <Link
-        to={`character/${character.id}`}
-        key={character.id}
-        className="card card-small"
-      >
-        <p className="card-title">{character.name}</p>
-      </Link>
-    ));
-
   if (error) return <RenderError error={error} />;
-  if (!results || navigation.state === 'loading') return <LoaderSpinner />;
+  const isLoading =
+    navigation.state === 'loading' &&
+    !navigation.location.pathname.includes('/character/');
+  if (!results || isLoading) return <LoaderSpinner />;
 
   const items = renderItems(results);
 
@@ -50,4 +42,16 @@ function LoaderSpinner() {
       <div className="loader"></div>
     </div>
   );
+}
+
+function renderItems(arr: Array<Character>) {
+  return arr.map((character) => (
+    <Link
+      to={`character/${character.id}`}
+      key={character.id}
+      className="card card-small"
+    >
+      <p className="card-title">{character.name}</p>
+    </Link>
+  ));
 }

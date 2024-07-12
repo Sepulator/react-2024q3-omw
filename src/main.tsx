@@ -15,6 +15,9 @@ const router = createBrowserRouter([
     element: <MainPage />,
     errorElement: <ErrorPage />,
     loader: charactersLoader,
+    shouldRevalidate: ({ nextUrl }) => {
+      return !nextUrl.pathname.includes('/character/');
+    },
     children: [
       {
         path: 'character/:characterId',

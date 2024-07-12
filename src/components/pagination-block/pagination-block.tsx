@@ -10,8 +10,8 @@ export function PaginationBlock() {
   const navigate = useNavigate();
 
   const navigateToUrl = (urlToNavigate: string) => {
-    const url = new URL(urlToNavigate).search;
-    navigate(url);
+    const path = new URL(urlToNavigate).search.replace('/character/', '');
+    navigate(`/${path}`);
   };
 
   if (!info.info) return '';

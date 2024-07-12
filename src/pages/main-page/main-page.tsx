@@ -1,5 +1,4 @@
 import { Outlet } from 'react-router-dom';
-
 import CardList from '@/components/card-list';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
@@ -9,7 +8,7 @@ export function MainPage() {
   return (
     <>
       <Header />
-      <main className="">
+      <main>
         <div>
           <CardList />
         </div>
