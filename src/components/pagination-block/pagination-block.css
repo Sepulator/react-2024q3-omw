@@ -1,0 +1,20 @@
+.pagination-block {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.pagination-block .btn {
+  border-radius: 9px;
+}
+.pagination-block .btn:first-child {
+  padding: 1rem 1.48rem 1rem 1rem;
+}
+.pagination-block .btn:last-child {
+  padding: 1rem 1rem 1rem 1.48rem;
+}
+
+.pagination-block .logo {
+  height: 4rem;
+}

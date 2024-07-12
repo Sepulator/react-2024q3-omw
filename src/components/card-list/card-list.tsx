@@ -1,16 +1,15 @@
+import { Link } from 'react-router-dom';
 import { useLoaderData, useNavigation } from 'react-router-dom';
 
 import { Character } from '@/interfaces';
 import { LoaderData } from '@/services/api-service';
-import chevronLeft from '@assets/chevron-left.svg';
-import chevronLight from '@assets/chevron-right.svg';
+import PaginationBlock from '@/components/pagination-block';
 import './card-list.css';
-import { Link } from 'react-router-dom';
 
 export function CardList() {
   const { info } = useLoaderData() as LoaderData;
-
   const navigation = useNavigation();
+
   const { error, results } = info;
 
   const renderItems = (arr: Array<Character>) =>
@@ -32,14 +31,7 @@ export function CardList() {
   return (
     <>
       <div className="container grid mb-sm">{items}</div>
-      <div className="pagination-block">
-        <button className="btn">
-          <img src={chevronLeft} alt="chevron left" className="logo" />
-        </button>
-        <button className="btn">
-          <img src={chevronLight} alt="chevron right" className="logo" />
-        </button>
-      </div>
+      <PaginationBlock />
     </>
   );
 }

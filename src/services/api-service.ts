@@ -44,10 +44,10 @@ const characterLoader = async ({ params }: IdParams) => {
 const charactersLoader = async ({ request }: { request: Request }) => {
   const url = new URL(request.url);
   const searchName = url.searchParams.get('name')?.toLowerCase().trim() || '';
+  const page = url.searchParams.get('page')?.toLowerCase().trim() || 1;
+  const path = `${endpoints.character}?page=${page}&name=${searchName}`;
 
-  const info = await getRes<Info<Array<Character>>>(
-    `${endpoints.character}?name=${searchName}`
-  );
+  const info = await getRes<Info<Array<Character>>>(path);
 
   return { info, searchName };
 };

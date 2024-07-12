@@ -9,9 +9,13 @@ export function MainPage() {
   return (
     <>
       <Header />
-      <main>
-        <CardList />
-        <Outlet />
+      <main className="">
+        <div>
+          <CardList />
+        </div>
+        <div className="detail">
+          <Outlet />
+        </div>
       </main>
       <Footer />
     </>

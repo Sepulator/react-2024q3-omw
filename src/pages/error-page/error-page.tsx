@@ -4,8 +4,6 @@ import {
   isRouteErrorResponse,
 } from 'react-router-dom';
 
-import './error-page.css';
-
 export function ErrorPage() {
   const error = useRouteError() as ErrorResponse;
 

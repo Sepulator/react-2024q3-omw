@@ -88,13 +88,13 @@ h1 {
   color: #fff;
   border: none;
   background-color: #e67e22;
-  cursor: pointer;
   transition: border-color 0.25s;
 }
 
-.btn:hover,
-.btn:active {
+.btn:hover:not([disabled]),
+.btn:active:not([disabled]) {
   background-color: #cf711f;
+  cursor: pointer;
 }
 
 .logo {
