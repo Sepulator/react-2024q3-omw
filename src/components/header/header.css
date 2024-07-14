@@ -1,0 +1,12 @@
+header {
+  height: 9.6rem;
+  background-color: #fdf2e9;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  padding: 0 9.6rem;
+}
+
+header a {
+  display: inline-block;
+}
