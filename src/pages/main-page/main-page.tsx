@@ -7,13 +7,12 @@ import './main-page.css';
 
 export function MainPage() {
   const location = useLocation();
+  const isPathCharacter = location.pathname.includes('/character/');
 
   return (
     <>
       <Header />
-      <main
-        className={`container ${location.pathname.includes('/character/') ? 'opened' : ''}`}
-      >
+      <main className={`container ${isPathCharacter ? 'opened' : ''}`}>
         <div className="main">
           <CardList />
         </div>

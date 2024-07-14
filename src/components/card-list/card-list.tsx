@@ -11,6 +11,7 @@ export function CardList() {
   const navigation = useNavigation();
   const location = useLocation();
   const { error, results } = info;
+  const isPathCharacter = location.pathname.includes('/character/');
 
   if (error) return <RenderError error={error} />;
 
@@ -24,9 +25,7 @@ export function CardList() {
 
   return (
     <>
-      <div
-        className={`card-list mb-sm ${location.pathname.includes('/character/') ? 'opened' : ''}`}
-      >
+      <div className={`card-list mb-sm ${isPathCharacter ? 'opened' : ''}`}>
         {items}
       </div>
       <PaginationBlock />
@@ -42,7 +41,7 @@ function RenderError({ error }: { error: string }) {
   );
 }
 
-function LoaderSpinner() {
+export function LoaderSpinner() {
   return (
     <div className="center">
       <div className="loader"></div>

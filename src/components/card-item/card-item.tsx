@@ -1,13 +1,20 @@
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useLoaderData, useNavigate, useNavigation } from 'react-router-dom';
 
 import { Character } from '@/interfaces';
 import close from '@assets/x-mark.svg';
 import './card-item.css';
+import { LoaderSpinner } from '../card-list/card-list';
 
 export function CardItem() {
+  const navigation = useNavigation();
   const navigate = useNavigate();
   const character = useLoaderData() as Character;
   const { image, name, status, gender, species, location } = character;
+  const isLoading =
+    navigation.state === 'loading' &&
+    navigation.location?.pathname.includes('/character/');
+
+  if (isLoading) return <LoaderSpinner />;
 
   return (
     <div className="card">
@@ -32,7 +39,7 @@ export function CardItem() {
         <button
           className="btn btn-close"
           type="button"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate('/')}
         >
           <img src={close} alt="close button" className="logo logo-close" />
         </button>

@@ -1,6 +1,10 @@
+main {
+  position: relative;
+}
+
 .center {
   display: flex;
-  position: relative;
+  position: absolute;
 }
 
 .center h1,
