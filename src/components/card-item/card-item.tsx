@@ -1,8 +1,11 @@
-import { useLoaderData } from 'react-router-dom';
-import './card-item.css';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+
 import { Character } from '@/interfaces';
+import close from '@assets/x-mark.svg';
+import './card-item.css';
 
 export function CardItem() {
+  const navigate = useNavigate();
   const character = useLoaderData() as Character;
   const { image, name, status, gender, species, location } = character;
 
@@ -26,6 +29,13 @@ export function CardItem() {
             <p>{location.name}</p>
           </li>
         </ul>
+        <button
+          className="btn btn-close"
+          type="button"
+          onClick={() => navigate(-1)}
+        >
+          <img src={close} alt="close button" className="logo logo-close" />
+        </button>
       </div>
     </div>
   );

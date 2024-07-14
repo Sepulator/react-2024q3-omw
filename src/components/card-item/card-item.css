@@ -17,12 +17,14 @@
 }
 
 .card-small {
+  line-height: 1;
   padding: 2rem 2rem;
   border: none;
   background-color: #fff;
 }
 
 .card-content {
+  position: relative;
   width: 56%;
   padding: 2.4rem;
 }
@@ -49,4 +51,18 @@
   font-size: 1.6rem;
   font-weight: 500;
   color: #999;
+}
+
+.btn-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #fff;
+  padding: 0;
+  line-height: 0;
+}
+
+.logo-close {
+  height: 4rem;
+  width: 100%;
 }

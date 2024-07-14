@@ -8,6 +8,25 @@
   margin: 0 auto;
 }
 
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 3.2rem;
+  row-gap: 6.4rem;
+}
+
+.card-list.opened {
+  grid-template-columns: 1fr;
+  row-gap: 2.4rem;
+}
+
+main.opened {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: 6.4rem 0;
+  gap: 9rem;
+}
+
 .loader {
   width: 200px;
   aspect-ratio: 1;

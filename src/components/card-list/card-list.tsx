@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useLoaderData, useNavigation } from 'react-router-dom';
 
 import { Character } from '@/interfaces';
@@ -9,20 +9,26 @@ import './card-list.css';
 export function CardList() {
   const { info } = useLoaderData() as LoaderData;
   const navigation = useNavigation();
-
+  const location = useLocation();
   const { error, results } = info;
 
   if (error) return <RenderError error={error} />;
+
   const isLoading =
     navigation.state === 'loading' &&
-    !navigation.location.pathname.includes('/character/');
+    !navigation.location?.pathname.includes('/character/');
+
   if (!results || isLoading) return <LoaderSpinner />;
 
-  const items = renderItems(results);
+  const items = RenderItems(results);
 
   return (
     <>
-      <div className="container grid mb-sm">{items}</div>
+      <div
+        className={`card-list mb-sm ${location.pathname.includes('/character/') ? 'opened' : ''}`}
+      >
+        {items}
+      </div>
       <PaginationBlock />
     </>
   );
@@ -44,7 +50,7 @@ function LoaderSpinner() {
   );
 }
 
-function renderItems(arr: Array<Character>) {
+function RenderItems(arr: Array<Character>) {
   return arr.map((character) => (
     <Link
       to={`character/${character.id}`}
