@@ -1,56 +1,66 @@
 import type { Params } from 'react-router-dom';
-import { Character, Endpoints, Info } from '@/interfaces';
+import { rickAndMortyApi } from './rickandmorty-api';
+import { store } from './store';
 
 type IdParams = {
   params: Params<'characterId'>;
 };
 
 interface LoaderData {
-  info: Info<Character[]>;
-  searchName: string;
+  info?: {
+    count: number;
+    pages: number;
+    next: string | null;
+    prev: string | null;
+  };
+  error?: string;
+  name: string;
+  page: string;
 }
 
-const endpoints: Endpoints = {
-  character: '/character/',
-  episode: '/episode/',
-  location: '/location/',
-};
-
-const apiBase = 'https://rickandmortyapi.com/api';
-
-const getRes = async <T>(url: string): Promise<T> => {
-  const res = await fetch(`${apiBase}${url}`);
-
-  return (await res.json()) as T;
-};
+interface LoaderCharacter {
+  id: string;
+}
 
 const characterLoader = async ({ params }: IdParams) => {
   if (!params.characterId) {
     throw new Error('Expected params.id');
   }
 
-  const character = await getRes<Character>(
-    `${endpoints.character}${params.characterId}`
+  const promise = store.dispatch(
+    rickAndMortyApi.endpoints.getCharacter.initiate(params.characterId)
   );
+
+  const character = await promise.unwrap();
+  promise.unsubscribe();
 
   if (!character) {
     throw new Error(
       `Uh oh, I couldn't find a character with id "${params.characterId}"`
     );
   }
-  return character;
+  return { id: params.characterId } as LoaderCharacter;
 };
 
 const charactersLoader = async ({ request }: { request: Request }) => {
   const url = new URL(request.url);
-  const searchName = url.searchParams.get('name')?.toLowerCase().trim() || '';
-  const page = url.searchParams.get('page')?.toLowerCase().trim() || 1;
-  const pathFull = `${endpoints.character}?page=${page}&name=${searchName}`;
+  const name = url.searchParams.get('name')?.toLowerCase().trim() || '';
+  const page = url.searchParams.get('page')?.toLowerCase().trim() || '1';
 
-  const info = await getRes<Info<Array<Character>>>(pathFull);
+  const promise = store.dispatch(
+    rickAndMortyApi.endpoints.getCharacters.initiate({ page, name })
+  );
 
-  return { info, searchName };
+  const info = await promise.unwrap();
+  promise.unsubscribe();
+
+  return {
+    info: info.info,
+    name,
+    error: info.error,
+    page,
+  } as LoaderData;
 };
 
 export { characterLoader, charactersLoader };
-export type { LoaderData };
+export type { LoaderData, LoaderCharacter };

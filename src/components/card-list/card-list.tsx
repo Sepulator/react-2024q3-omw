@@ -5,12 +5,13 @@ import { Character } from '@/interfaces';
 import { LoaderData } from '@/services/api-service';
 import PaginationBlock from '@/components/pagination-block';
 import './card-list.css';
+import { useGetCharactersQuery } from '@/services/rickandmorty-api';
 
 export function CardList() {
-  const { info } = useLoaderData() as LoaderData;
+  const { error, name, page } = useLoaderData() as LoaderData;
+  const { data } = useGetCharactersQuery({ page, name });
   const navigation = useNavigation();
   const location = useLocation();
-  const { error, results } = info;
   const isPathCharacter = location.pathname.includes('/character/');
 
   if (error) return <RenderError error={error} />;
@@ -19,9 +20,9 @@ export function CardList() {
     navigation.state === 'loading' &&
     !navigation.location?.pathname.includes('/character/');
 
-  if (!results || isLoading) return <LoaderSpinner />;
+  if (!data?.results || isLoading) return <LoaderSpinner />;
 
-  const items = RenderItems(results);
+  const items = RenderItems(data.results);
 
   return (
     <>
@@ -50,13 +51,9 @@ export function LoaderSpinner() {
 }
 
 function RenderItems(arr: Array<Character>) {
-  return arr.map((character) => (
-    <Link
-      to={`character/${character.id}`}
-      key={character.id}
-      className="card card-small"
-    >
-      <p className="card-title">{character.name}</p>
+  return arr.map(({ name, id }) => (
+    <Link to={`character/${id}`} key={id} className="card card-small">
+      <p className="card-title">{name}</p>
     </Link>
   ));
 }

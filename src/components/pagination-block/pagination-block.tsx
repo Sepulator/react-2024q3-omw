@@ -14,8 +14,8 @@ export function PaginationBlock() {
     navigate(`/${path}`);
   };
 
-  if (!info.info) return '';
-  const { next, prev } = info.info;
+  if (!info) return '';
+  const { next, prev } = info;
 
   return (
     <div className="pagination-block">

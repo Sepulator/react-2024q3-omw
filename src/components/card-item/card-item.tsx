@@ -1,20 +1,23 @@
 import { useLoaderData, useNavigate, useNavigation } from 'react-router-dom';
 
-import { Character } from '@/interfaces';
 import close from '@assets/x-mark.svg';
 import './card-item.css';
 import { LoaderSpinner } from '../card-list/card-list';
+import { LoaderCharacter } from '@/services/api-service';
+import { useGetCharacterQuery } from '@/services/rickandmorty-api';
 
 export function CardItem() {
   const navigation = useNavigation();
   const navigate = useNavigate();
-  const character = useLoaderData() as Character;
-  const { image, name, status, gender, species, location } = character;
+  const { id } = useLoaderData() as LoaderCharacter;
+  const { data } = useGetCharacterQuery(id);
+
   const isLoading =
     navigation.state === 'loading' &&
     navigation.location?.pathname.includes('/character/');
 
-  if (isLoading) return <LoaderSpinner />;
+  if (!data || isLoading) return <LoaderSpinner />;
+  const { image, name, status, gender, species, location } = data;
 
   return (
     <div className="card">
