@@ -16,13 +16,6 @@
   width: 44%;
 }
 
-.card-small {
-  line-height: 1;
-  padding: 2rem 2rem;
-  border: none;
-  background-color: #fff;
-}
-
 .card-content {
   position: relative;
   width: 56%;

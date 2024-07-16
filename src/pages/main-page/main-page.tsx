@@ -3,7 +3,6 @@ import { Outlet, useLocation } from 'react-router-dom';
 import CardList from '@/components/card-list';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
-import './main-page.css';
 
 export function MainPage() {
   const location = useLocation();
@@ -13,10 +12,10 @@ export function MainPage() {
     <>
       <Header />
       <main className={`container ${isPathCharacter ? 'opened' : ''}`}>
-        <div className="main">
+        <div>
           <CardList />
         </div>
-        <div className="detail">
+        <div>
           <Outlet />
         </div>
       </main>

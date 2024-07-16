@@ -5,11 +5,18 @@ import { Character } from '@/interfaces';
 import { LoaderData } from '@/services/api-service';
 import PaginationBlock from '@/components/pagination-block';
 import './card-list.css';
-import { useGetCharactersQuery } from '@/services/rickandmorty-api';
+import { useAppDispatch, useAppSelector } from '@/services/hooks';
+import {
+  addCharacter,
+  removeCharacter,
+  selectCharacterIds,
+} from '@/services/characterSlice';
+import { ChangeEvent } from 'react';
+// import { useGetCharactersQuery } from '@/services/rickandmorty-api';
 
 export function CardList() {
-  const { error, name, page } = useLoaderData() as LoaderData;
-  const { data } = useGetCharactersQuery({ page, name });
+  const { error, results } = useLoaderData() as LoaderData;
+  // const { data } = useGetCharactersQuery({ page, name });
   const navigation = useNavigation();
   const location = useLocation();
   const isPathCharacter = location.pathname.includes('/character/');
@@ -20,9 +27,9 @@ export function CardList() {
     navigation.state === 'loading' &&
     !navigation.location?.pathname.includes('/character/');
 
-  if (!data?.results || isLoading) return <LoaderSpinner />;
+  if (!results || isLoading) return <LoaderSpinner />;
 
-  const items = RenderItems(data.results);
+  const items = RenderItems(results);
 
   return (
     <>
@@ -51,9 +58,25 @@ export function LoaderSpinner() {
 }
 
 function RenderItems(arr: Array<Character>) {
-  return arr.map(({ name, id }) => (
-    <Link to={`character/${id}`} key={id} className="card card-small">
-      <p className="card-title">{name}</p>
-    </Link>
+  const dispatch = useAppDispatch();
+  const characterIds = useAppSelector(selectCharacterIds);
+
+  return arr.map((character) => (
+    <div className="card-small--block" key={character.id}>
+      <input
+        name="checkbox"
+        type="checkbox"
+        className="card card-small--input"
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          e.target.checked
+            ? dispatch(addCharacter(character))
+            : dispatch(removeCharacter(character.id));
+        }}
+        checked={characterIds.includes(character.id)}
+      />
+      <Link to={`character/${character.id}`} className="card card-small">
+        <p className="card-title">{character.name}</p>
+      </Link>
+    </div>
   ));
 }

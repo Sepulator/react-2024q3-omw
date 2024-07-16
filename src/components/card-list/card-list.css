@@ -19,11 +19,29 @@
   row-gap: 2.4rem;
 }
 
+.card-small {
+  line-height: 1;
+  padding: 2rem 2rem;
+  border: none;
+  background-color: #fff;
+  width: 100%;
+}
+
+.card-small--block {
+  display: flex;
+}
+
 main.opened {
   display: grid;
   grid-template-columns: 1fr 2fr;
   padding: 6.4rem 0;
   gap: 9rem;
+}
+
+.no-wrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .loader {

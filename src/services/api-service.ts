@@ -1,6 +1,8 @@
 import type { Params } from 'react-router-dom';
 import { rickAndMortyApi } from './rickandmorty-api';
 import { store } from './store';
+import { Character } from '@/interfaces';
+import { mockCharacters } from '@assets/mock';
 
 type IdParams = {
   params: Params<'characterId'>;
@@ -16,11 +18,14 @@ interface LoaderData {
   error?: string;
   name: string;
   page: string;
+  results?: Character[];
 }
 
 interface LoaderCharacter {
   id: string;
 }
+
+const mock = mockCharacters.results?.slice(0, 19);
 
 const characterLoader = async ({ params }: IdParams) => {
   if (!params.characterId) {
@@ -42,23 +47,24 @@ const characterLoader = async ({ params }: IdParams) => {
   return { id: params.characterId } as LoaderCharacter;
 };
 
-const charactersLoader = async ({ request }: { request: Request }) => {
-  const url = new URL(request.url);
-  const name = url.searchParams.get('name')?.toLowerCase().trim() || '';
-  const page = url.searchParams.get('page')?.toLowerCase().trim() || '1';
+const charactersLoader = () => {
+  // const url = new URL(request.url);
+  // const name = url.searchParams.get('name')?.toLowerCase().trim() || '';
+  // const page = url.searchParams.get('page')?.toLowerCase().trim() || '1';
 
-  const promise = store.dispatch(
-    rickAndMortyApi.endpoints.getCharacters.initiate({ page, name })
-  );
+  // const promise = store.dispatch(
+  //   rickAndMortyApi.endpoints.getCharacters.initiate({ page, name })
+  // );
 
-  const info = await promise.unwrap();
-  promise.unsubscribe();
+  // const info = await promise.unwrap();
+  // promise.unsubscribe();
 
   return {
-    info: info.info,
-    name,
-    error: info.error,
-    page,
+    // info: info.info,
+    // error: info.error,
+    // name,
+    // page,
+    results: mock,
   } as LoaderData;
 };
 
