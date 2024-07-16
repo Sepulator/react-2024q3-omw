@@ -1,0 +1,11 @@
+.basket-block {
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.basket-block p {
+  text-align: center;
+}

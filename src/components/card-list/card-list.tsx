@@ -75,7 +75,7 @@ function RenderItems(arr: Array<Character>) {
         checked={characterIds.includes(character.id)}
       />
       <Link to={`character/${character.id}`} className="card card-small">
-        <p className="card-title">{character.name}</p>
+        <p className="card-title no-wrap">{character.name}</p>
       </Link>
     </div>
   ));
