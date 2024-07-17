@@ -12,11 +12,11 @@ import {
   selectCharacterIds,
 } from '@/services/characterSlice';
 import { ChangeEvent } from 'react';
-// import { useGetCharactersQuery } from '@/services/rickandmorty-api';
+import { useGetCharactersQuery } from '@/services/rickandmorty-api';
 
 export function CardList() {
-  const { error, results } = useLoaderData() as LoaderData;
-  // const { data } = useGetCharactersQuery({ page, name });
+  const { error, page, name } = useLoaderData() as LoaderData;
+  const { data } = useGetCharactersQuery({ page, name });
   const navigation = useNavigation();
   const location = useLocation();
   const isPathCharacter = location.pathname.includes('/character/');
@@ -27,9 +27,9 @@ export function CardList() {
     navigation.state === 'loading' &&
     !navigation.location?.pathname.includes('/character/');
 
-  if (!results || isLoading) return <LoaderSpinner />;
+  if (!data?.results || isLoading) return <LoaderSpinner />;
 
-  const items = RenderItems(results);
+  const items = RenderItems(data.results);
 
   return (
     <>
