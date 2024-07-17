@@ -13,12 +13,14 @@ import {
 } from '@/services/characterSlice';
 import { ChangeEvent } from 'react';
 import { useGetCharactersQuery } from '@/services/rickandmorty-api';
+import Basket from '../basket';
 
 export function CardList() {
   const { error, page, name } = useLoaderData() as LoaderData;
   const { data } = useGetCharactersQuery({ page, name });
   const navigation = useNavigation();
   const location = useLocation();
+  const characterIds = useAppSelector(selectCharacterIds);
   const isPathCharacter = location.pathname.includes('/character/');
 
   if (error) return <RenderError error={error} />;
@@ -37,6 +39,7 @@ export function CardList() {
         {items}
       </div>
       <PaginationBlock />
+      {characterIds.length ? <Basket /> : ''}
     </>
   );
 }

@@ -1,11 +1,21 @@
 .basket-block {
-  position: sticky;
+  z-index: 1;
+  bottom: calc(1% + 9.6rem);
+  right: 1%;
+  position: fixed;
   display: flex;
   flex-direction: column;
   padding: 2rem;
   gap: 1rem;
+  background-color: #fdf2e9;
+  border-radius: 9px;
 }
 
 .basket-block p {
   text-align: center;
+}
+
+.basket-block .btn {
+  padding-left: 2rem;
+  padding-right: 2rem;
 }

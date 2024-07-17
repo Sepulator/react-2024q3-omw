@@ -28,10 +28,15 @@ const characterSlice = createSlice({
         (character) => character.id !== id
       );
     },
+    removeAllCharacters(state) {
+      state.characterIds = [];
+      state.characters = [];
+    },
   },
 });
 
-export const { addCharacter, removeCharacter } = characterSlice.actions;
+export const { addCharacter, removeCharacter, removeAllCharacters } =
+  characterSlice.actions;
 export const selectCharacter = (state: RootState) =>
   state.characters.characters;
 export const selectCharacterIds = (state: RootState) =>

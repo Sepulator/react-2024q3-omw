@@ -13,7 +13,7 @@ export function Footer() {
       </a>
       <p>&copy; {date}</p>
       <a href="https://github.com/Sepulator/">
-        <img src={github} alt="RS School" className="logo" />
+        <img src={github} alt="Github" className="logo" />
       </a>
     </footer>
   );
