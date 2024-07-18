@@ -8,10 +8,10 @@ import ErrorBoundary from './components/error-boundary/index.ts';
 import MainPage from './pages/main-page/index.ts';
 import ErrorPage from './pages/error-page/index.ts';
 import CardItem from './components/card-item/index.ts';
-import { store } from './services/store.ts';
+import { setupStore } from './services/store.ts';
 import { characterLoader, charactersLoader } from './services/api-service.ts';
 
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     path: '/',
     element: <MainPage />,
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ErrorBoundary>
-      <Provider store={store}>
+      <Provider store={setupStore()}>
         <RouterProvider router={router} />
       </Provider>
     </ErrorBoundary>

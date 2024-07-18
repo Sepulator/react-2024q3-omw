@@ -2,9 +2,9 @@ import { Character, Info } from '@/interfaces';
 
 export const mockCharacters: Info<Array<Character>> = {
   info: {
-    count: 2,
-    pages: 1,
-    next: null,
+    count: 4,
+    pages: 2,
+    next: 'https://rickandmortyapi.com/api/character/?page=2',
     prev: null,
   },
   results: [

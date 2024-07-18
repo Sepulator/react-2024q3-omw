@@ -10,6 +10,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --dark-body-bg: rgb(15 23 42 / 1);
+  --dark-div-bg: #1e293b;
 }
 
 * {
@@ -112,6 +114,10 @@ h1 {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
+}
+
+.dark {
+  color-scheme: dark;
 }
 
 /* @media (prefers-color-scheme: light) {
