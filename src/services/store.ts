@@ -7,15 +7,6 @@ const rootReducer = combineReducers({
   [rickAndMortyApi.reducerPath]: rickAndMortyApi.reducer,
 });
 
-// export const store = configureStore({
-//   reducer: {
-//     characters: characterReducer,
-//     [rickAndMortyApi.reducerPath]: rickAndMortyApi.reducer,
-//   },
-//   middleware: (getDefaultMiddleware) =>
-//     getDefaultMiddleware().concat(rickAndMortyApi.middleware),
-// });
-
 export const setupStore = (preloadedState?: Partial<RootState>) =>
   configureStore({
     reducer: rootReducer,
@@ -26,5 +17,4 @@ export const setupStore = (preloadedState?: Partial<RootState>) =>
 
 export type AppStore = ReturnType<typeof setupStore>;
 export type RootState = ReturnType<typeof rootReducer>;
-// export type AppDispatch = typeof store.dispatch;
 export type AppDispatch = AppStore['dispatch'];

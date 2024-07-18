@@ -10,6 +10,7 @@ import ErrorPage from './pages/error-page/index.ts';
 import CardItem from './components/card-item/index.ts';
 import { setupStore } from './services/store.ts';
 import { characterLoader, charactersLoader } from './services/api-service.ts';
+import { ThemeProvider } from './context/theme-context.tsx';
 
 export const router = createBrowserRouter([
   {
@@ -33,9 +34,11 @@ export const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ErrorBoundary>
-      <Provider store={setupStore()}>
-        <RouterProvider router={router} />
-      </Provider>
+      <ThemeProvider>
+        <Provider store={setupStore()}>
+          <RouterProvider router={router} />
+        </Provider>
+      </ThemeProvider>
     </ErrorBoundary>
   </React.StrictMode>
 );
