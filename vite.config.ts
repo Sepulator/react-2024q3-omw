@@ -1,9 +1,9 @@
 /// <reference types="vitest" />
-
 import { defineConfig } from 'vite';
 import path from 'path';
 import react from '@vitejs/plugin-react';
 import eslint from 'vite-plugin-eslint2';
+import magicalSvg from 'vite-plugin-magical-svg';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -19,6 +19,7 @@ export default defineConfig({
     eslint({
       fix: true,
     }),
+    magicalSvg({ target: 'react' }),
   ],
   test: {
     globals: true,

@@ -1,30 +1,34 @@
 import SearchForm from '@components/search-form';
 
-import { useTheme } from '@/context/hooks';
-import logo from '@assets/logo.svg';
-import sunLogo from '@assets/sun.svg';
-import moonLogo from '@assets/moon.svg';
+import Logo from '@assets/logo.svg';
+import SunLogo from '@assets/sun.svg';
+import MoonLogo from '@assets/moon.svg';
 import './header.css';
+import { useTheme } from '@/context/context';
 
 export function Header() {
-  const theme = useTheme();
-
-  const handleThemeChange = () => {};
+  const { themeType, toggleTheme } = useTheme();
 
   return (
     <header>
       <div>
         <a href="https://rickandmortyapi.com/">
-          <img src={logo} alt="Rick and Morty logo" className="logo" />
+          <Logo className="logo" />
         </a>
       </div>
+
       <SearchForm />
-      <div>
-        <button type="button" className="btn" onClick={handleThemeChange}>
-          {theme === 'dark' ? (
-            <img src={sunLogo} alt="sun" className="logo" />
+      <div className="theme">
+        <button
+          title="Switch between dark and light mode"
+          type="button"
+          className="btn btn-theme"
+          onClick={() => toggleTheme(themeType)}
+        >
+          {themeType === 'dark' ? (
+            <SunLogo className="logo logo-theme" />
           ) : (
-            <img src={moonLogo} alt="moon" className="logo" />
+            <MoonLogo className="logo logo-theme" />
           )}
         </button>
       </div>

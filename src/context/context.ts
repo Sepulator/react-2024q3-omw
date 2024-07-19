@@ -1,11 +1,10 @@
-import { Themes } from '@/interfaces/themes';
-import { createContext } from 'react';
+import { ThemeContextProps, THEMES } from '@/interfaces/themes';
+import { createContext, useContext } from 'react';
 
-export interface UpdateContext {
-  toggleTheme: (theme: Context) => void;
-}
+export const ThemeContext = createContext<ThemeContextProps>({
+  themeType: 'light',
+  theme: THEMES['light'],
+  toggleTheme: () => {},
+});
 
-export type Context = keyof Themes;
-
-export const ThemeContext = createContext<Context | null>(null);
-export const ThemeUpdateContext = createContext<UpdateContext | null>(null);
+export const useTheme = () => useContext(ThemeContext);

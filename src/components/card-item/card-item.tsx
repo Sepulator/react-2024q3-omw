@@ -1,6 +1,6 @@
 import { useLoaderData, useNavigate, useNavigation } from 'react-router-dom';
 
-import close from '@assets/x-mark.svg';
+import Close from '@assets/x-mark.svg';
 import './card-item.css';
 import { LoaderSpinner } from '../card-list/card-list';
 import { LoaderCharacter } from '@/services/api-service';
@@ -44,7 +44,7 @@ export function CardItem() {
           type="button"
           onClick={() => navigate('/')}
         >
-          <img src={close} alt="close button" className="logo logo-close" />
+          <Close className="logo logo-close" />
         </button>
       </div>
     </div>

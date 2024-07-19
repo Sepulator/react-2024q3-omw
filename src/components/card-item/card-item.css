@@ -58,4 +58,9 @@
 .logo-close {
   height: 4rem;
   width: 100%;
+  color: #333;
+}
+
+.logo-close:hover {
+  color: #fff;
 }

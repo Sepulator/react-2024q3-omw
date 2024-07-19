@@ -1,8 +1,8 @@
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
 import './pagination-block.css';
-import chevronLeft from '@assets/chevron-left.svg';
-import chevronRight from '@assets/chevron-right.svg';
+import ChevronLeft from '@assets/chevron-left.svg';
+import ChevronRight from '@assets/chevron-right.svg';
 import { LoaderData } from '@/services/api-service';
 
 export function PaginationBlock() {
@@ -25,7 +25,7 @@ export function PaginationBlock() {
         disabled={!prev}
         onClick={() => prev && navigateToUrl(prev)}
       >
-        <img src={chevronLeft} alt="chevron left" className="logo" />
+        <ChevronLeft className="logo" />
       </button>
       <button
         className="btn"
@@ -33,7 +33,7 @@ export function PaginationBlock() {
         type="button"
         onClick={() => next && navigateToUrl(next)}
       >
-        <img src={chevronRight} alt="chevron right" className="logo" />
+        <ChevronRight className="logo" />
       </button>
     </div>
   );

@@ -1,11 +1,8 @@
 import { CSSProperties } from 'react';
 
-export interface Themes {
-  light: CSSProperties;
-  dark: CSSProperties;
-}
+export type ThemeType = 'dark' | 'light';
 
-export const themes: Themes = {
+export const THEMES: Record<ThemeType, CSSProperties> = {
   light: {
     color: '#000000',
     background: '#eeeeee',
@@ -15,3 +12,9 @@ export const themes: Themes = {
     background: '#222222',
   },
 };
+
+export interface ThemeContextProps {
+  themeType: ThemeType;
+  theme: CSSProperties;
+  toggleTheme: (themeType: ThemeType) => void;
+}
