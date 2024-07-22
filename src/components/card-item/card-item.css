@@ -1,15 +1,15 @@
 .card {
   display: flex;
   flex-direction: row;
-  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+  box-shadow: 0 2.4rem 4.8rem rgba(var(--shadow-link), 0.075);
   border-radius: 11px;
   overflow: hidden;
   transition: all 0.4s;
+  background-color: var(--bg-card);
 }
 
 .card:hover {
-  cursor: pointer;
-  box-shadow: 0 2.4rem 4.8rem rgba(121, 39, 39, 0.15);
+  box-shadow: 0 2.4rem 4.8rem rgba(var(--shadow-link-hover), 0.15);
 }
 
 .card-img {
@@ -25,7 +25,7 @@
 .card-title {
   font-size: 2.2rem;
   font-weight: 600;
-  color: #333;
+  color: var(--text);
 }
 
 .card-attributes {
@@ -43,14 +43,14 @@
 .subtitle {
   font-size: 1.6rem;
   font-weight: 500;
-  color: #999;
+  color: var(--gray);
 }
 
 .btn-close {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background-color: #fff;
+  background-color: var(--white);
   padding: 0;
   line-height: 0;
 }
@@ -58,9 +58,9 @@
 .logo-close {
   height: 4rem;
   width: 100%;
-  color: #333;
+  color: var(--gray-title);
 }
 
 .logo-close:hover {
-  color: #fff;
+  color: var(--white);
 }

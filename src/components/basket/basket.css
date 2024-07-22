@@ -7,7 +7,7 @@
   flex-direction: column;
   padding: 2rem;
   gap: 1rem;
-  background-color: #fdf2e9;
+  background-color: var(--accent-bg);
   border-radius: 9px;
 }
 

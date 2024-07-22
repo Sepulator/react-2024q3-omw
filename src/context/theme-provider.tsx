@@ -1,6 +1,6 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { ThemeContext } from './context';
-import { THEMES, ThemeType } from '@/interfaces/themes';
+import { ThemeType } from '@/interfaces/themes';
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<ThemeType>('light');
@@ -9,11 +9,14 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     themeType === 'light' ? setTheme('dark') : setTheme('light');
   }
 
+  useEffect(() => {
+    document.body.setAttribute('data-theme', theme);
+  }, [theme]);
+
   return (
     <ThemeContext.Provider
       value={{
         themeType: theme,
-        theme: THEMES[theme],
         toggleTheme,
       }}
     >

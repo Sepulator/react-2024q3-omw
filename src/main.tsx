@@ -10,7 +10,7 @@ import ErrorPage from './pages/error-page/index.ts';
 import CardItem from './components/card-item/index.ts';
 import { setupStore } from './services/store.ts';
 import { characterLoader, charactersLoader } from './services/api-service.ts';
-import { ThemeProvider } from './context/theme-context.tsx';
+import { ThemeProvider } from './context/theme-provider.tsx';
 
 export const router = createBrowserRouter([
   {
