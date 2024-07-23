@@ -37,7 +37,7 @@ const characterSlice = createSlice({
 
 export const { addCharacter, removeCharacter, removeAllCharacters } =
   characterSlice.actions;
-export const selectCharacter = (state: RootState) =>
+export const selectCharacters = (state: RootState) =>
   state.characters.characters;
 export const selectCharacterIds = (state: RootState) =>
   state.characters.characterIds;

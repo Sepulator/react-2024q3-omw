@@ -3,11 +3,14 @@ import './basket.css';
 import {
   removeAllCharacters,
   selectCharacterIds,
+  selectCharacters,
 } from '@/services/characterSlice';
+import { getDownloadURL } from '@/libs/download-csv';
 
 export function Basket() {
   const dispatch = useAppDispatch();
   const characterIds = useAppSelector(selectCharacterIds);
+  const characters = useAppSelector(selectCharacters);
   const length = characterIds.length;
 
   return (
@@ -22,7 +25,13 @@ export function Basket() {
       >
         Unselect all
       </button>
-      <button className="btn btn-round">Download</button>
+      <a
+        href={getDownloadURL(characters)}
+        download={`${length}_characters.csv`}
+        className="btn btn-round"
+      >
+        Download
+      </a>
     </div>
   );
 }
