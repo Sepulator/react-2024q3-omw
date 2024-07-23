@@ -1,14 +1,20 @@
-import { useLoaderData, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import './pagination-block.css';
 import ChevronLeft from '@assets/chevron-left.svg';
 import ChevronRight from '@assets/chevron-right.svg';
-import { LoaderData } from '@/services/api-service';
 
-export function PaginationBlock() {
-  const { info } = useLoaderData() as LoaderData;
+type Props = {
+  info: {
+    count: number;
+    pages: number;
+    next: string | null;
+    prev: string | null;
+  };
+};
+
+export function PaginationBlock({ info }: Props) {
   const navigate = useNavigate();
-
   const navigateToUrl = (urlToNavigate: string) => {
     const path = new URL(urlToNavigate).search.replace('/character/', '');
     navigate(`/${path}`);

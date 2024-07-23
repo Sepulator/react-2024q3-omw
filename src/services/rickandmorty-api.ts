@@ -18,9 +18,8 @@ export const rickAndMortyApi = createApi({
   reducerPath: 'rickAndMortyApi',
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
-    getCharacters: builder.query<Info<Character[]>, QueryParams>({
-      query: ({ page = '1', name = '' }) =>
-        `${endpoints.character}?page=${page}&name=${name}`,
+    getCharacters: builder.query<Info<Character[]>, string>({
+      query: (query) => `${endpoints.character}${query}`,
     }),
     getCharacter: builder.query<Character, string>({
       query: (id) => `${endpoints.character}${id}`,

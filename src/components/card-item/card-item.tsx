@@ -1,22 +1,18 @@
-import { useLoaderData, useNavigate, useNavigation } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import Close from '@assets/x-mark.svg';
 import './card-item.css';
-import { LoaderSpinner } from '../card-list/card-list';
-import { LoaderCharacter } from '@/services/api-service';
+import Close from '@assets/x-mark.svg';
+import { LoaderSpinner, RenderError } from '../card-list/card-list';
 import { useGetCharacterQuery } from '@/services/rickandmorty-api';
 
 export function CardItem() {
-  const navigation = useNavigation();
   const navigate = useNavigate();
-  const { id } = useLoaderData() as LoaderCharacter;
-  const { data } = useGetCharacterQuery(id);
+  const { characterId = '1' } = useParams();
+  const { data, isLoading, isFetching } = useGetCharacterQuery(characterId);
 
-  const isLoading =
-    navigation.state === 'loading' &&
-    navigation.location?.pathname.includes('/character/');
+  if (isFetching || isLoading) return <LoaderSpinner />;
+  if (!data) return <RenderError error="Character not found" />;
 
-  if (!data || isLoading) return <LoaderSpinner />;
   const { image, name, status, gender, species, location } = data;
 
   return (
