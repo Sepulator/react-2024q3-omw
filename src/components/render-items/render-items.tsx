@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import { Character } from '@/interfaces';
 import {
   addCharacter,
@@ -17,19 +18,21 @@ export function RenderItems({ characters }: Props) {
   const characterIds = useAppSelector(selectCharacterIds);
 
   return characters.map((character) => (
-    <div className="card-small--block" key={character.id}>
-      <input
-        name="checkbox"
-        type="checkbox"
-        className="card card-small--input"
-        onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          e.target.checked
-            ? dispatch(addCharacter(character))
-            : dispatch(removeCharacter(character.id));
-        }}
-        checked={characterIds.includes(character.id)}
-      />
-      <Link to={`character/${character.id}`} className="card card-small">
+    <div className="card card-small--block" key={character.id}>
+      <label htmlFor={`checkbox-${character.id}`} className="card-small--label">
+        <input
+          id={`checkbox-${character.id}`}
+          type="checkbox"
+          className="card-small--input"
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+            e.target.checked
+              ? dispatch(addCharacter(character))
+              : dispatch(removeCharacter(character.id));
+          }}
+          checked={characterIds.includes(character.id)}
+        />
+      </label>
+      <Link to={`character/${character.id}`} className="card-small">
         <p className="card-title">{character.name}</p>
       </Link>
     </div>

@@ -1,6 +1,6 @@
 import type { Params } from 'react-router-dom';
 import { rickAndMortyApi } from './rickandmorty-api';
-import { setupStore } from './store';
+import { store } from './store';
 
 type IdParams = {
   params: Params<'characterId'>;
@@ -27,7 +27,7 @@ const characterLoader = async ({ params }: IdParams) => {
     throw new Error('Expected params.id');
   }
 
-  const promise = setupStore().dispatch(
+  const promise = store.dispatch(
     rickAndMortyApi.endpoints.getCharacter.initiate(params.characterId)
   );
 
@@ -47,7 +47,7 @@ const charactersLoader = async ({ request }: { request: Request }) => {
   const name = url.searchParams.get('name')?.toLowerCase().trim() || '';
   const page = url.searchParams.get('page')?.toLowerCase().trim() || '1';
 
-  const promise = setupStore().dispatch(
+  const promise = store.dispatch(
     rickAndMortyApi.endpoints.getCharacters.initiate({ page, name })
   );
 

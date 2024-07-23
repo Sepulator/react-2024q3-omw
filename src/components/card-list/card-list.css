@@ -23,8 +23,29 @@
   line-height: 1;
   padding: 2rem 2rem;
   border: none;
-  background-color: var(--white);
+  background-color: var(--bg-card);
   width: 100%;
+  cursor: pointer;
+}
+
+.card-small--block {
+  display: flex;
+  align-items: center;
+}
+
+.card-small--label {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #999;
+}
+
+.card-small--input {
+  display: inline-block;
+  margin: 0 1rem;
+  width: 2rem;
+  height: 2rem;
+
   cursor: pointer;
 }
 
