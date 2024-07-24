@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  RouteObject,
+  RouterProvider,
+} from 'react-router-dom';
 
 import './index.css';
 import ErrorBoundary from './components/error-boundary/index.ts';
@@ -9,7 +13,7 @@ import ErrorPage from './pages/error-page/index.ts';
 import CardItem from './components/card-item/index.ts';
 import AllProviders from './components/all-providers/index.ts';
 
-export const router = createBrowserRouter([
+export const routes: RouteObject[] = [
   {
     path: '/',
     element: <MainPage />,
@@ -21,9 +25,13 @@ export const router = createBrowserRouter([
       },
     ],
   },
-]);
+];
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+export const router = createBrowserRouter(routes);
+
+ReactDOM.createRoot(
+  document.getElementById('root') || document.createElement('div')
+).render(
   <React.StrictMode>
     <ErrorBoundary>
       <AllProviders>

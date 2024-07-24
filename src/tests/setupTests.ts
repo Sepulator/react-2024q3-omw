@@ -8,10 +8,8 @@ import AllProviders from '@/components/all-providers';
 
 expect.extend(matchers);
 
-afterEach(() => server.resetHandlers());
-
 beforeAll(() => server.listen());
-
+afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
 export function setup(

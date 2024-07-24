@@ -33,7 +33,7 @@ export function CardList() {
 export function RenderError({ error }: { error: string }) {
   return (
     <div className="center">
-      <h1>{error}</h1>
+      <h1 data-testid="error">{error}</h1>
     </div>
   );
 }
@@ -41,7 +41,7 @@ export function RenderError({ error }: { error: string }) {
 export function LoaderSpinner() {
   return (
     <div className="center">
-      <div className="loader"></div>
+      <div className="loader" data-testid="loader"></div>
     </div>
   );
 }

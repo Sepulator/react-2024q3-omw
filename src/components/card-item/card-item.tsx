@@ -21,7 +21,7 @@ export function CardItem() {
       <div className="card-content">
         <ul className="card-attributes">
           <li className="card-attribute">
-            <p className="card-title">{name}</p>
+            <h2 className="card-title">{name}</h2>
             <p>
               {status} &mdash; {species}
             </p>
@@ -37,6 +37,7 @@ export function CardItem() {
         </ul>
         <button
           className="btn btn-close"
+          data-testid="closeBtn"
           type="button"
           onClick={() => navigate('/')}
         >

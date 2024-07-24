@@ -1,4 +1,4 @@
-import { Character } from '@/interfaces';
+import { Character } from '@/interfaces/interfaces';
 
 const generateCSV = (characters: Character[]) =>
   characters.reduce((acc, c) => {

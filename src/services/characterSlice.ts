@@ -1,4 +1,4 @@
-import { Character } from '@/interfaces';
+import { Character } from '@/interfaces/interfaces';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit/react';
 import type { RootState } from './store';
 
