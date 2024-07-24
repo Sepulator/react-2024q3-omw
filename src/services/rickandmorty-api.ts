@@ -7,11 +7,6 @@ const endpoints: Endpoints = {
   location: '/location/',
 };
 
-export interface QueryParams {
-  page: string;
-  name: string;
-}
-
 const baseUrl = 'https://rickandmortyapi.com/api';
 
 export const rickAndMortyApi = createApi({

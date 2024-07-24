@@ -5,12 +5,12 @@ import Basket from '@components/basket';
 import RenderItems from '@components/render-items';
 import PaginationBlock from '@/components/pagination-block';
 import { useAppSelector } from '@/services/hooks';
-import { selectCharacterIds } from '@/services/characterSlice';
 import { useGetCharactersQuery } from '@/services/rickandmorty-api';
+import { selectCharacters } from '@/services/characterSlice';
 
 export function CardList() {
   const query = useLocation().search;
-  const characterIds = useAppSelector(selectCharacterIds);
+  const characters = useAppSelector(selectCharacters);
   const { data, isLoading, isFetching, error } = useGetCharactersQuery(query);
   const location = useLocation();
   const isPathCharacter = location.pathname.includes('/character/');
@@ -25,7 +25,7 @@ export function CardList() {
         {<RenderItems characters={data.results} />}
       </div>
       <PaginationBlock info={data.info!} />
-      {characterIds.length ? <Basket /> : ''}
+      {characters.length ? <Basket /> : ''}
     </>
   );
 }

@@ -2,16 +2,14 @@ import { useAppDispatch, useAppSelector } from '@/services/hooks';
 import './basket.css';
 import {
   removeAllCharacters,
-  selectCharacterIds,
   selectCharacters,
 } from '@/services/characterSlice';
 import { getDownloadURL } from '@/libs/download-csv';
 
 export function Basket() {
   const dispatch = useAppDispatch();
-  const characterIds = useAppSelector(selectCharacterIds);
   const characters = useAppSelector(selectCharacters);
-  const length = characterIds.length;
+  const length = characters.length;
 
   return (
     <div className="basket-block">
