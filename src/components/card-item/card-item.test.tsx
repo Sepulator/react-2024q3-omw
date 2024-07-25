@@ -5,7 +5,7 @@ import { screen, waitFor } from '@testing-library/react';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
 import { routes } from '@/main';
 
-describe('CardItem component', () => {
+describe('Card Item component', () => {
   const renderer = (characterId = '1') => {
     const router = createMemoryRouter(routes, {
       initialEntries: ['/', `${endpoints.character}${characterId}`],

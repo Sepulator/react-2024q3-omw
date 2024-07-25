@@ -2,17 +2,13 @@ import { http, HttpResponse } from 'msw';
 import { mockCharacters } from './mocks';
 
 export const handlers = [
-  http.get('https://rickandmortyapi.com/api/character/', () =>
-    HttpResponse.json(mockCharacters)
-  ),
-
   http.get('https://rickandmortyapi.com/api/character/', ({ request }) => {
     const url = new URL(request.url);
     const name = url.searchParams.get('name');
     const page = url.searchParams.get('page');
 
-    if (name !== 'Rick') return HttpResponse.error();
-    if (page !== '2') return HttpResponse.error();
+    if (name && name !== 'Rick') return HttpResponse.error();
+    if (page && Number(page) > 2) return HttpResponse.error();
 
     if (name === 'Rick')
       return HttpResponse.json({
@@ -33,8 +29,10 @@ export const handlers = [
           next: null,
           prev: 'https://rickandmortyapi.com/api/character/?page=1',
         },
-        results: mockCharacters.results,
+        results: mockCharacters.results!,
       });
+
+    return HttpResponse.json(mockCharacters);
   }),
 
   http.get('https://rickandmortyapi.com/api/character/:id', ({ params }) => {

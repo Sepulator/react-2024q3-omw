@@ -2,7 +2,7 @@
 import { ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Character } from '@/interfaces/interfaces';
+import { Character } from '@/interfaces/api-types';
 import {
   addCharacter,
   removeCharacter,

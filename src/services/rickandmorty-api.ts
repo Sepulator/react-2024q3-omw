@@ -1,4 +1,4 @@
-import { Character, Endpoints, Info } from '@/interfaces/interfaces';
+import { Character, Endpoints, Info } from '@/interfaces/api-types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const endpoints: Endpoints = {

@@ -22,13 +22,14 @@ export function Header() {
         <button
           title="Switch between dark and light mode"
           type="button"
+          data-testid="themBtn"
           className="btn btn-theme"
           onClick={() => toggleTheme(themeType)}
         >
           {themeType === 'dark' ? (
-            <SunLogo className="logo logo-theme" />
+            <SunLogo className="logo logo-theme" data-testid="sunLogo" />
           ) : (
-            <MoonLogo className="logo logo-theme" />
+            <MoonLogo className="logo logo-theme" data-testid="moonLogo" />
           )}
         </button>
       </div>

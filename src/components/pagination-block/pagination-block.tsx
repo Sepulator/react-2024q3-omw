@@ -20,7 +20,6 @@ export function PaginationBlock({ info }: Props) {
     navigate(`/${path}`);
   };
 
-  if (!info) return '';
   const { next, prev } = info;
 
   return (
@@ -28,6 +27,7 @@ export function PaginationBlock({ info }: Props) {
       <button
         className="btn"
         type="button"
+        data-testid="btnPrev"
         disabled={!prev}
         onClick={() => prev && navigateToUrl(prev)}
       >
@@ -37,6 +37,7 @@ export function PaginationBlock({ info }: Props) {
         className="btn"
         disabled={!next}
         type="button"
+        data-testid="btnNext"
         onClick={() => next && navigateToUrl(next)}
       >
         <ChevronRight className="logo" />

@@ -24,7 +24,7 @@ export function CardList() {
       <div className={`card-list mb-sm ${isPathCharacter ? 'opened' : ''}`}>
         {<RenderItems characters={data.results} />}
       </div>
-      <PaginationBlock info={data.info!} />
+      {data.info && <PaginationBlock info={data.info} />}
       {characters.length ? <Basket /> : ''}
     </>
   );
