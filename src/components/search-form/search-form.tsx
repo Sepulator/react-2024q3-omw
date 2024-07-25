@@ -18,12 +18,12 @@ export function SearchForm() {
       <input
         type="text"
         name="text"
-        defaultValue={query}
         placeholder="Type name from Rick and Morty"
         onInput={(e: ChangeEvent<HTMLInputElement>) => {
           const value = e.target.value;
           setQuery(value);
         }}
+        value={query}
       />
       <button className="btn">Search</button>
     </form>
