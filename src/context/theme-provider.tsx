@@ -6,7 +6,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<ThemeType>('light');
 
   function toggleTheme(themeType: ThemeType) {
-    themeType === 'light' ? setTheme('dark') : setTheme('light');
+    setTheme(() => (themeType === 'light' ? 'dark' : 'light'));
   }
 
   useEffect(() => {

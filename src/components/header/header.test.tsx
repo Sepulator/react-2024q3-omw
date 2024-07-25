@@ -1,17 +1,28 @@
-import { routes } from '@/main';
-import { setup } from '@/tests/setupTests';
-import { createMemoryRouter, RouterProvider } from 'react-router-dom';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
+import Theme from '../theme';
+import { ThemeContextProps } from '@/interfaces/themes';
+import { ThemeContext } from '@/context/context';
 
 describe('Header component', () => {
-  const renderer = () => {
-    const router = createMemoryRouter(routes, {
-      initialEntries: ['/'],
-    });
-
-    return setup(<RouterProvider router={router} />);
+  const theme: ThemeContextProps = {
+    themeType: 'light',
+    toggleTheme: vi.fn(),
   };
 
-  it('switching theme button', () => {
-    renderer();
+  beforeEach(() => {
+    render(
+      <ThemeContext.Provider value={theme}>
+        <Theme />
+      </ThemeContext.Provider>
+    );
+  });
+
+  it('click switching theme button', async () => {
+    const user = userEvent.setup();
+
+    await user.click(screen.getByTestId('themBtn'));
+    expect(theme.toggleTheme).toHaveBeenCalledWith('light');
   });
 });

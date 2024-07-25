@@ -5,6 +5,7 @@ import { expect, afterEach } from 'vitest';
 
 import { server } from './node';
 import AllProviders from '@/components/all-providers';
+import userEvent, { UserEvent } from '@testing-library/user-event';
 
 expect.extend(matchers);
 
@@ -15,6 +16,7 @@ afterAll(() => server.close());
 export function setup(
   ui: ReactElement,
   options?: Omit<RenderOptions, 'wrapper'>
-) {
-  return render(ui, { wrapper: AllProviders, ...options });
+): { user: UserEvent } {
+  const user = userEvent.setup();
+  return { user, ...render(ui, { wrapper: AllProviders, ...options }) };
 }
