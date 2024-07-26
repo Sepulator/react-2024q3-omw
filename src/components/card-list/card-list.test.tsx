@@ -1,14 +1,10 @@
-import { router, routes } from '@/main';
+import { router } from '@/main';
 import { setup } from '@/tests/setupTests';
 import { screen } from '@testing-library/react';
-import { createMemoryRouter, RouterProvider } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
 
 describe('Card list component', () => {
   const renderer = () => {
-    createMemoryRouter(routes, {
-      initialEntries: ['/'],
-    });
-
     return setup(<RouterProvider router={router} />);
   };
 
@@ -29,7 +25,7 @@ describe('Card list component', () => {
     await user.type(screen.getByRole('textbox'), QUERY);
     await user.click(screen.getByRole('button', { name: 'search' }));
 
-    const cards = screen.getAllByRole('checkbox');
+    const cards = await screen.findAllByRole('checkbox');
     expect(cards.length).toBe(ONE_CARDS);
     expect(screen.getByText(CARD_NAME)).toBeInTheDocument();
   });

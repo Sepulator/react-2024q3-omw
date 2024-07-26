@@ -18,6 +18,7 @@ export function Basket() {
       </p>
       <button
         type="button"
+        aria-label="unselect"
         className="btn btn-round"
         onClick={() => dispatch(removeAllCharacters())}
       >
@@ -25,6 +26,7 @@ export function Basket() {
       </button>
       <a
         href={getDownloadURL(characters)}
+        aria-label="download"
         download={`${length}_characters.csv`}
         className="btn btn-round"
       >
