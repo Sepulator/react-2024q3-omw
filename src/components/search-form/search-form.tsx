@@ -25,7 +25,9 @@ export function SearchForm() {
         }}
         value={query}
       />
-      <button className="btn">Search</button>
+      <button aria-label="search" className="btn">
+        Search
+      </button>
     </form>
   );
 }

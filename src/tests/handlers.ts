@@ -8,7 +8,6 @@ export const handlers = [
     const page = url.searchParams.get('page');
 
     if (name && name !== 'Rick') return HttpResponse.error();
-    if (page && Number(page) > 2) return HttpResponse.error();
 
     if (name === 'Rick')
       return HttpResponse.json({

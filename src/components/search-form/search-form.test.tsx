@@ -30,7 +30,7 @@ describe('Search form component', () => {
     const { user } = renderer();
 
     await user.type(screen.getByRole('textbox'), query);
-    await user.click(screen.getByRole('textbox'));
+    await user.click(screen.getByRole('button', { name: /search/ }));
 
     expect(JSON.parse(localStorage.getItem('query-text')!)).toBe(query);
   });
