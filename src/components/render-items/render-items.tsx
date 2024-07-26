@@ -17,21 +17,26 @@ export function RenderItems({ characters }: Props) {
   const dispatch = useAppDispatch();
   const selectedCharacters = useAppSelector(selectCharacters);
 
+  const isChecked = (character: Character) =>
+    selectedCharacters.some((item) => item.id === character.id);
+
   return characters.map((character) => (
     <div className="card card-small--block" key={character.id}>
       <label
+        htmlFor={`checkbox-${character.id}`}
         aria-label={`checkbox-${character.id}`}
         className="card-small--label"
       >
         <input
           type="checkbox"
+          id={`checkbox-${character.id}`}
           className="card-small--input"
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
             e.target.checked
               ? dispatch(addCharacter(character))
               : dispatch(removeCharacter(character.id));
           }}
-          checked={selectedCharacters.includes(character)}
+          checked={isChecked(character)}
         />
       </label>
       <Link to={`character/${character.id}`} className="card-small">
