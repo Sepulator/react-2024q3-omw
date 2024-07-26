@@ -1,15 +1,12 @@
-import { routes } from '@/main';
 import { setup } from '@/tests/setupTests';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { createMemoryRouter, RouterProvider } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
+
+import { router } from '@/main';
 
 describe('Pagination Block component', () => {
   const renderer = () => {
-    const router = createMemoryRouter(routes, {
-      initialEntries: ['/'],
-    });
-
     return setup(<RouterProvider router={router} />);
   };
 

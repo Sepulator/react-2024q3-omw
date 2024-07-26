@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -20,9 +19,11 @@ export function RenderItems({ characters }: Props) {
 
   return characters.map((character) => (
     <div className="card card-small--block" key={character.id}>
-      <label htmlFor={`checkbox-${character.id}`} className="card-small--label">
+      <label
+        aria-label={`checkbox-${character.id}`}
+        className="card-small--label"
+      >
         <input
-          id={`checkbox-${character.id}`}
           type="checkbox"
           className="card-small--input"
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
