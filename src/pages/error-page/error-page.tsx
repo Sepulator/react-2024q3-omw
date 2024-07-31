@@ -22,7 +22,11 @@ export function ErrorPage() {
         >
           {error.data}
         </details>
-        <button className="btn" onClick={() => (window.location.href = '/')}>
+        <button
+          className="btn btn-round"
+          style={{ padding: '2rem' }}
+          onClick={() => (window.location.href = '/')}
+        >
           Click to go Home Page
         </button>
       </main>

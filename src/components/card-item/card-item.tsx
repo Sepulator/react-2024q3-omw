@@ -1,20 +1,19 @@
-import { useLoaderData, useNavigate, useNavigation } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import { Character } from '@/interfaces';
-import close from '@assets/x-mark.svg';
 import './card-item.css';
-import { LoaderSpinner } from '../card-list/card-list';
+import Close from '@assets/x-mark.svg';
+import { LoaderSpinner, RenderError } from '../card-list/card-list';
+import { useGetCharacterQuery } from '@/services/rickandmorty-api';
 
 export function CardItem() {
-  const navigation = useNavigation();
   const navigate = useNavigate();
-  const character = useLoaderData() as Character;
-  const { image, name, status, gender, species, location } = character;
-  const isLoading =
-    navigation.state === 'loading' &&
-    navigation.location?.pathname.includes('/character/');
+  const { characterId = '1' } = useParams();
+  const { data, isLoading, isFetching } = useGetCharacterQuery(characterId);
 
-  if (isLoading) return <LoaderSpinner />;
+  if (isFetching || isLoading) return <LoaderSpinner />;
+  if (!data) return <RenderError error="Character not found" />;
+
+  const { image, name, status, gender, species, location } = data;
 
   return (
     <div className="card">
@@ -22,7 +21,7 @@ export function CardItem() {
       <div className="card-content">
         <ul className="card-attributes">
           <li className="card-attribute">
-            <p className="card-title">{name}</p>
+            <h2 className="card-title">{name}</h2>
             <p>
               {status} &mdash; {species}
             </p>
@@ -38,10 +37,11 @@ export function CardItem() {
         </ul>
         <button
           className="btn btn-close"
+          data-testid="closeBtn"
           type="button"
           onClick={() => navigate('/')}
         >
-          <img src={close} alt="close button" className="logo logo-close" />
+          <Close className="logo logo-close" />
         </button>
       </div>
     </div>

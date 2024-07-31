@@ -1,42 +1,39 @@
-import { Link, useLocation } from 'react-router-dom';
-import { useLoaderData, useNavigation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
-import { Character } from '@/interfaces';
-import { LoaderData } from '@/services/api-service';
-import PaginationBlock from '@/components/pagination-block';
 import './card-list.css';
+import Basket from '@components/basket';
+import RenderItems from '@components/render-items';
+import PaginationBlock from '@/components/pagination-block';
+import { useAppSelector } from '@/services/hooks';
+import { useGetCharactersQuery } from '@/services/rickandmorty-api';
+import { selectCharacters } from '@/services/characterSlice';
 
 export function CardList() {
-  const { info } = useLoaderData() as LoaderData;
-  const navigation = useNavigation();
+  const query = useLocation().search;
+  const characters = useAppSelector(selectCharacters);
+  const { data, isLoading, isFetching, error } = useGetCharactersQuery(query);
   const location = useLocation();
-  const { error, results } = info;
   const isPathCharacter = location.pathname.includes('/character/');
 
-  if (error) return <RenderError error={error} />;
-
-  const isLoading =
-    navigation.state === 'loading' &&
-    !navigation.location?.pathname.includes('/character/');
-
-  if (!results || isLoading) return <LoaderSpinner />;
-
-  const items = RenderItems(results);
+  if (isFetching || isLoading) return <LoaderSpinner />;
+  if (!data?.results || error)
+    return <RenderError error="There is nothing here" />;
 
   return (
     <>
       <div className={`card-list mb-sm ${isPathCharacter ? 'opened' : ''}`}>
-        {items}
+        {<RenderItems characters={data.results} />}
       </div>
-      <PaginationBlock />
+      {data.info && <PaginationBlock info={data.info} />}
+      {characters.length ? <Basket /> : ''}
     </>
   );
 }
 
-function RenderError({ error }: { error: string }) {
+export function RenderError({ error }: { error: string }) {
   return (
     <div className="center">
-      <h1>{error}</h1>
+      <h1 data-testid="error">{error}</h1>
     </div>
   );
 }
@@ -44,19 +41,7 @@ function RenderError({ error }: { error: string }) {
 export function LoaderSpinner() {
   return (
     <div className="center">
-      <div className="loader"></div>
+      <div className="loader" data-testid="loader"></div>
     </div>
   );
-}
-
-function RenderItems(arr: Array<Character>) {
-  return arr.map((character) => (
-    <Link
-      to={`character/${character.id}`}
-      key={character.id}
-      className="card card-small"
-    >
-      <p className="card-title">{character.name}</p>
-    </Link>
-  ));
 }

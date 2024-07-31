@@ -1,6 +1,6 @@
 header {
   height: 9.6rem;
-  background-color: #fdf2e9;
+  background-color: var(--accent-bg);
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
@@ -9,4 +9,27 @@ header {
 
 header a {
   display: inline-block;
+}
+
+.theme {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.btn-theme {
+  background-color: var(--accent-bg);
+  border: none;
+  cursor: pointer;
+  line-height: 0;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.logo-theme {
+  height: 4rem;
+  color: var(--black);
+}
+
+.logo-theme:hover {
+  color: var(--white);
 }

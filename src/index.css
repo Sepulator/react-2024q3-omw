@@ -3,13 +3,49 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color: #213547;
-  background-color: #ffffff;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --bg: #fff;
+  --bg-card: #fff;
+  --bg-placeholder: #fff;
+  --text: #213547;
+  --white: #fff;
+  --black: #000;
+
+  --accent: #e67e22;
+  --accent-bg: #fdf2e9;
+  --accent-hover: #cf711f;
+  --accent-hover-logo: #646cffaa;
+
+  --gray: #999;
+  --gray-title: #333;
+  --gray-placeholder: #aaa;
+  --shadow-focus: 230, 125, 34;
+  --shadow-link: 0, 0, 0;
+  --shadow-link-hover: 182, 53, 53;
+}
+
+[data-theme='dark'] {
+  --bg: #0f172a;
+  --bg-card: #1e293b;
+  --text: #94a3b8;
+  --accent: #262626;
+  --accent-bg: #374151;
+  --accent-hover: #171717;
+  --bg-placeholder: #1e293b;
+}
+
+[data-theme='light'] {
+  --bg: #fff;
+  --bg-card: #fff;
+  --text: #213547;
+  --accent: #e67e22;
+  --accent-bg: #fdf2e9;
+  --accent-hover: #cf711f;
+  --bg-placeholder: #fff;
 }
 
 * {
@@ -20,24 +56,26 @@
 
 *:focus {
   outline: none;
-  box-shadow: 0 0 0 0.4rem rgba(230, 125, 34, 0.5);
+  box-shadow: 0 0 0 0.4rem rgba(var(--shadow-focus), 0.5);
 }
 
 html {
   /* font-size: 10px; */
   font-size: 62.5%;
-  /* overflow-x: hidden; */
   scroll-behavior: smooth;
 }
 
 body {
   min-width: 320px;
   height: 100vh;
+  color: var(--text);
+  background-color: var(--bg);
 }
 
 main {
   min-height: calc(100vh - 9.6rem * 2);
   padding: 6.4rem 0;
+  position: relative;
 }
 
 a {
@@ -45,10 +83,6 @@ a {
   width: auto;
   text-decoration: inherit;
   line-height: 0;
-}
-
-a:hover {
-  color: #747bff;
 }
 
 h1 {
@@ -81,14 +115,19 @@ h1 {
   font-family: inherit;
   color: #fff;
   border: none;
-  background-color: #e67e22;
+  background-color: var(--accent);
   transition: border-color 0.25s;
 }
 
 .btn:hover:not([disabled]),
 .btn:active:not([disabled]) {
-  background-color: #cf711f;
+  background-color: var(--accent-hover);
   cursor: pointer;
+}
+
+.btn-round {
+  border-radius: 9px;
+  padding: 2rem 0;
 }
 
 .logo {
@@ -97,10 +136,7 @@ h1 {
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em var(--accent-hover-logo));
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -108,16 +144,3 @@ h1 {
     animation: logo-spin infinite 20s linear;
   }
 }
-
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */

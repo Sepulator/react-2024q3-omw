@@ -1,10 +1,5 @@
-main {
-  position: relative;
-}
-
 .center {
   display: flex;
-  position: absolute;
 }
 
 .center h1,
@@ -24,11 +19,51 @@ main {
   row-gap: 2.4rem;
 }
 
+.card-small {
+  line-height: 1;
+  padding: 2rem 2rem;
+  border: none;
+  background-color: var(--bg-card);
+  width: 100%;
+  cursor: pointer;
+}
+
+.card-small--block {
+  display: flex;
+  align-items: center;
+}
+
+.card-small--label {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #999;
+}
+
+.card-small--input {
+  display: inline-block;
+  margin: 0 1rem;
+  width: 2rem;
+  height: 2rem;
+
+  cursor: pointer;
+}
+
+.card-small--block {
+  display: flex;
+}
+
 main.opened {
   display: grid;
   grid-template-columns: 1fr 2fr;
   padding: 6.4rem 0;
   gap: 9rem;
+}
+
+.no-wrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .loader {
@@ -39,6 +74,8 @@ main.opened {
     radial-gradient(farthest-side, #ffa516 94%, #0000) top/8px 8px no-repeat,
     conic-gradient(#0000 30%, #ffa516);
   -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+  animation: l13 1s infinite linear;
+  mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
   animation: l13 1s infinite linear;
 }
 @keyframes l13 {
