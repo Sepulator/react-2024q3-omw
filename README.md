@@ -1,11 +1,15 @@
 # React Project
-[Task link](https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/tasks/class-components.md)
+
+[Task React Forms](https://github.com/rolling-scopes-school/tasks/tree/master/react/modules/forms)
 
 ## Install dependencies
+
 ```
 npm install
 ```
-## Start server 
+
+## Start server
+
 ```
 npm run dev
 ```
