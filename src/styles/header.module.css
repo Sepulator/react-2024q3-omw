@@ -1,0 +1,20 @@
+.header {
+  height: 9.6rem;
+  background-color: var(--accent-bg);
+  display: grid;
+  grid-template-columns: 1fr 400px 1fr;
+  align-items: center;
+  padding: 0 9.6rem;
+}
+
+.header a {
+  display: inline-block;
+}
+
+.btnContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  gap: 2rem;
+  grid-column-start: 2;
+}
