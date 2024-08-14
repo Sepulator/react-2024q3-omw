@@ -16,3 +16,9 @@
   font-weight: 500;
   justify-self: center;
 }
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 0 3.2rem;
+  }
+}

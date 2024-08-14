@@ -47,3 +47,9 @@
 .logo:hover {
   filter: drop-shadow(0 0 2em var(--accent-hover-logo));
 }
+
+@media (max-width: 600px) {
+  .logo {
+    height: 4rem;
+  }
+}
