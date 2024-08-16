@@ -16,6 +16,9 @@
       ],
       "@styles/*": [
         "src/styles/*"
+      ],
+      "@libs/*": [
+        "src/libs/*"
       ]
     },
     "composite": true,
