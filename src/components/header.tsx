@@ -1,21 +1,32 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import styles from '@styles/header.module.css';
 import global from '@styles/global.module.css';
 
 export default function Header() {
+  const setStyles = (isActive: boolean) =>
+    isActive
+      ? `${global.btnRound + ' ' + styles.active}`
+      : `${global.btnRound}`;
+
   return (
     <header className={styles.header}>
       <div className={styles.btnContainer}>
-        <Link to="/" className={global.btnRound}>
+        <NavLink to="/" className={({ isActive }) => setStyles(isActive)}>
           Home
-        </Link>
-        <Link to="uncontrolled" className={global.btnRound}>
+        </NavLink>
+        <NavLink
+          to="controlled"
+          className={({ isActive }) => setStyles(isActive)}
+        >
           Controlled
-        </Link>
-        <Link to="uncontrolled" className={global.btnRound}>
+        </NavLink>
+        <NavLink
+          to="uncontrolled"
+          className={({ isActive }) => setStyles(isActive)}
+        >
           Uncontrolled
-        </Link>
+        </NavLink>
       </div>
     </header>
   );

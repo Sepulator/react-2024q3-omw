@@ -6,7 +6,7 @@ import { RouterProvider } from 'react-router-dom';
 export default function AllProviders() {
   return (
     <Provider store={store}>
-      <RouterProvider router={router} />;
+      <RouterProvider router={router} />
     </Provider>
   );
 }

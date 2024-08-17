@@ -1,8 +1,10 @@
 import { createBrowserRouter, RouteObject } from 'react-router-dom';
+
+import Home from './home';
 import Layout from './layout';
 import ErrorPage from './error-page';
 import Uncontrolled from '@/components/uncontrolled';
-import Home from './home';
+import Controlled from '@/components/controlled';
 
 const routes: RouteObject[] = [
   {
@@ -12,6 +14,7 @@ const routes: RouteObject[] = [
     children: [
       { path: '/', element: <Home /> },
       { path: 'uncontrolled', element: <Uncontrolled /> },
+      { path: 'controlled', element: <Controlled /> },
     ],
   },
 ];

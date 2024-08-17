@@ -22,6 +22,10 @@
   flex-grow: 1;
 }
 
+.active {
+  color: var(--text-grape);
+}
+
 @media (max-width: 600px) {
   .header {
     padding: 0 3.2rem;

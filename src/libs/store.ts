@@ -2,14 +2,16 @@ import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 
 import { FormValue } from './interfaces';
-import { items } from './const';
+import { countries, items } from './const';
 
 export interface FormState {
   formValues: FormValue[];
+  countries: string[];
 }
 
 const initialState: FormState = {
   formValues: items,
+  countries: countries,
 };
 
 const formSlice = createSlice({
@@ -33,6 +35,7 @@ setupListeners(store.dispatch);
 
 export const { addFormValue } = formSlice.actions;
 export const formValues = (state: RootState) => state.formValues.formValues;
+export const countriesList = (state: RootState) => state.formValues.countries;
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
