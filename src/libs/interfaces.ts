@@ -6,7 +6,7 @@ export interface FormValue {
   repeat: string;
   country: string;
   gender: string;
-  upload?: string;
+  upload: string;
   accept: string;
 }
 
