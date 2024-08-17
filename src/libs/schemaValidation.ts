@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import { countryList } from './const';
 
 const fileTypes = ['image/jpeg', 'image/png'];
 
@@ -29,7 +30,12 @@ export const schemaUncontrolled = Yup.object().shape({
     .oneOf([Yup.ref('password')], 'Password must match')
     .required()
     .label('Password'),
-  country: Yup.string().required().label('Country'),
+  country: Yup.string()
+    .required()
+    .test('matchCountry', 'Country must be present in list', (value) => {
+      return countryList.includes(value);
+    })
+    .label('Country'),
   gender: Yup.string().required().label('Gender'),
   upload: Yup.mixed<File>()
     .test('fileSize', 'File size must be less than 1MB', (value) => {
@@ -72,17 +78,22 @@ export const schemaControlled = Yup.object().shape({
     .oneOf([Yup.ref('password')], 'Password must match')
     .required()
     .label('Password'),
-  country: Yup.string().required().label('Country'),
+  country: Yup.string()
+    .required()
+    .test('matchCountry', 'Country must be present in list', (value) => {
+      return countryList.includes(value);
+    })
+    .label('Country'),
   gender: Yup.string().required().label('Gender'),
   upload: Yup.mixed<FileList>()
-    .test('fileSize', 'File size must be less than 1MB', (value) => {
-      return value && value[0].size <= 1024 * 1024;
-    })
     .test('fileType', 'File extension must be .jpg, .jpeg, .png', (value) => {
-      return value && fileTypes.includes(value[0].type);
+      return value && fileTypes.includes(value[0]?.type);
+    })
+    .test('fileSize', 'File size must be less than 1MB', (value) => {
+      return value && value[0]?.size <= 1024 * 1024;
     })
     .required()
-    .label('Image File'),
+    .label('Image file'),
   accept: Yup.bool()
     .oneOf([true], 'Please accept Terms and Conditions')
     .required(),

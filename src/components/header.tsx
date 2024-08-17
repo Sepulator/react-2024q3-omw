@@ -19,7 +19,7 @@ export default function Header() {
           to="controlled"
           className={({ isActive }) => setStyles(isActive)}
         >
-          Controlled
+          React Hook
         </NavLink>
         <NavLink
           to="uncontrolled"

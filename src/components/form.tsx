@@ -85,7 +85,7 @@ export default function RegisterForm({ errors, onSubmit }: Props) {
             type="search"
             name="country"
             placeholder={d[5]}
-            autoComplete="off"
+            autoComplete="on"
             list="countries"
           />
           <datalist id="countries" className={styles.datalist}>

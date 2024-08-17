@@ -9,7 +9,7 @@ export const placeholderDescription = [
   'Start typing county',
 ];
 
-export const items: FormValue[] = [
+export const dummyData: FormValue[] = [
   {
     name: 'Arnold Schwarzenegger',
     age: '77',
@@ -45,7 +45,7 @@ export const items: FormValue[] = [
   },
 ];
 
-export const countries = [
+export const countryList = [
   'Afghanistan',
   'Albania',
   'Algeria',

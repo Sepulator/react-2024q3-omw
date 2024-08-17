@@ -9,6 +9,18 @@
   row-gap: 2rem;
   column-gap: 4rem;
 }
+@media (max-width: 1199px) {
+  .gridCards {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 6rem;
+  }
+}
+@media (max-width: 900px) {
+  .gridCards {
+    grid-template-columns: 1fr;
+    padding: 0 4rem;
+  }
+}
 
 .mb-md {
   margin-bottom: 6.4rem;

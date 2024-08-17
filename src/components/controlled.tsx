@@ -7,11 +7,14 @@ import global from '@styles/global.module.css';
 import { placeholderDescription as d } from '@/libs/const';
 import { schemaControlled } from '@/libs/schemaValidation';
 import { FormInput } from '@/libs/interfaces';
-import { useAppSelector } from '@/libs/store-hooks';
-import { countriesList } from '@/libs/store';
+import { useAppDispatch, useAppSelector } from '@/libs/store-hooks';
+import { addFormValue, countriesList } from '@/libs/store';
+import { useNavigate } from 'react-router-dom';
 
 export default function Controlled() {
   const countries = useAppSelector(countriesList);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -21,7 +24,13 @@ export default function Controlled() {
     resolver: yupResolver(schemaControlled),
   });
 
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const onSubmit = handleSubmit((data) => {
+    const upload = URL.createObjectURL(data.upload[0]);
+    const accept = 'On';
+    const age = `${data.age}`;
+    dispatch(addFormValue({ ...data, upload, age, accept }));
+    navigate('/');
+  });
 
   return (
     <div className={styles.wrap}>
@@ -92,7 +101,7 @@ export default function Controlled() {
             id="country"
             type="search"
             placeholder={d[5]}
-            autoComplete="off"
+            autoComplete="on"
             list="countries"
             {...register('country')}
           />
@@ -182,7 +191,12 @@ export default function Controlled() {
           <button aria-label="reset" className={global.btnRound} type="reset">
             Reset
           </button>
-          <button aria-label="submit" className={global.btnRound} type="submit">
+          <button
+            aria-label="submit"
+            className={global.btnRound}
+            type="submit"
+            disabled={Object.keys(errors).length !== 0}
+          >
             Submit
           </button>
         </div>

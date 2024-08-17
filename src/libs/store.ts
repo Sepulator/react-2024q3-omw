@@ -2,7 +2,7 @@ import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 
 import { FormValue } from './interfaces';
-import { countries, items } from './const';
+import { countryList } from './const';
 
 export interface FormState {
   formValues: FormValue[];
@@ -10,8 +10,8 @@ export interface FormState {
 }
 
 const initialState: FormState = {
-  formValues: items,
-  countries: countries,
+  formValues: [],
+  countries: countryList,
 };
 
 const formSlice = createSlice({

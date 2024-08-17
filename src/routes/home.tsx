@@ -7,7 +7,7 @@ import s from '@styles/global.module.css';
 export default function Home() {
   const items = useAppSelector(formValues);
 
-  if (!items.length) return 'No items to display.';
+  if (!items.length) return '';
 
   const renderItems = items.map((item, index) => (
     <CardItem formValue={item} key={index} />
