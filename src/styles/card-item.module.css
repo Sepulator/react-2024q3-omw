@@ -8,6 +8,10 @@
   background-color: var(--bg-card);
 }
 
+.active {
+  box-shadow: 0 0 2.4rem rgba(var(--text-grape), 1);
+}
+
 .card:hover {
   box-shadow: 0 2.4rem 4.8rem rgba(var(--shadow-link-hover), 0.15);
 }

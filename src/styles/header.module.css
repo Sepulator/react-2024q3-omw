@@ -23,7 +23,7 @@
 }
 
 .active {
-  color: var(--text-grape);
+  color: rgba(var(--text-grape));
 }
 
 @media (max-width: 600px) {

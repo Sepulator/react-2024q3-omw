@@ -4,13 +4,16 @@ import s from '@styles/card-item.module.css';
 
 type Props = {
   formValue: FormValue;
+  isActive: boolean;
 };
 
-export function CardItem({ formValue }: Props) {
+export function CardItem({ formValue, isActive }: Props) {
   const { age, country, email, gender, name, upload } = formValue;
 
+  const style = isActive ? `${s.card + ' ' + s.active}` : `${s.card}`;
+
   return (
-    <div className={s.card}>
+    <div className={style}>
       <img src={upload} alt={name} className={s.cardImg} />
       <div className={s.cardContent}>
         <ul className={s.cardAttributes}>
