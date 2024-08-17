@@ -16,7 +16,7 @@ export const schemaUncontrolled = Yup.object().shape({
     .label('Age'),
   email: Yup.string().email().required().label('Email'),
   password: Yup.string()
-    .min(6, 'Password must be at least 6 characters long')
+    .required()
     .matches(/[A-Z]/, 'Password contain at least one uppercase letter')
     .matches(/[a-z]/, 'Password contain at least one lowercase letter')
     .matches(/[0-9]/, 'Password must contain at least one number')
@@ -24,7 +24,6 @@ export const schemaUncontrolled = Yup.object().shape({
       /[!@#$%^&*(),.?":{}|<>]/,
       'Password contain at least one special character'
     )
-    .required()
     .label('Password'),
   repeat: Yup.string()
     .oneOf([Yup.ref('password')], 'Password must match')
@@ -64,7 +63,7 @@ export const schemaControlled = Yup.object().shape({
     .label('Age'),
   email: Yup.string().email().required().label('Email'),
   password: Yup.string()
-    .min(6, 'Password must be at least 6 characters long')
+    .required()
     .matches(/[A-Z]/, 'Password contain at least one uppercase letter')
     .matches(/[a-z]/, 'Password contain at least one lowercase letter')
     .matches(/[0-9]/, 'Password must contain at least one number')
@@ -72,7 +71,6 @@ export const schemaControlled = Yup.object().shape({
       /[!@#$%^&*(),.?":{}|<>]/,
       'Password contain at least one special character'
     )
-    .required()
     .label('Password'),
   repeat: Yup.string()
     .oneOf([Yup.ref('password')], 'Password must match')
