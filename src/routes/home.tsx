@@ -1,17 +1,17 @@
-import { Outlet } from 'react-router-dom';
+import { useAppSelector } from '@/libs/store-hooks';
 
-import Footer from '@/components/footer';
-import Header from '@/components/header';
-import global from '@styles/global.module.css';
+import { formValues } from '@/libs/store';
+import { CardItem } from '@/components/card-item';
+import s from '@styles/global.module.css';
 
 export default function Home() {
-  return (
-    <>
-      <Header />
-      <main className={global.container}>
-        <Outlet />
-      </main>
-      <Footer />
-    </>
-  );
+  const items = useAppSelector(formValues);
+
+  if (!items.length) return 'No items to display.';
+
+  const renderItems = items.map((item, index) => (
+    <CardItem formValue={item} key={index} />
+  ));
+
+  return <div className={s.gridCards}>{renderItems}</div>;
 }

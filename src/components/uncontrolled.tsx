@@ -8,10 +8,12 @@ import { FormErrors, FormValue } from '@/libs/interfaces';
 import { schemaValidation } from '@/libs/schemaValidation';
 import { useAppDispatch } from '@/libs/store-hooks';
 import { addFormValue } from '@/libs/store';
+import { useNavigate } from 'react-router-dom';
 
 export default function Uncontrolled() {
   const [errors, setErrors] = useState<FormErrors>({});
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     setErrors({});
@@ -24,6 +26,7 @@ export default function Uncontrolled() {
       dispatch(
         addFormValue({ ...(formObject as unknown as FormValue), upload })
       );
+      navigate('/');
     } catch (validationErrors) {
       const newErrors: Record<string, string> = {};
 

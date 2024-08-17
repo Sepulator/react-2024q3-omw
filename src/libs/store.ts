@@ -2,13 +2,14 @@ import { configureStore, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 
 import { FormValue } from './interfaces';
+import { items } from './const';
 
 export interface FormState {
   formValues: FormValue[];
 }
 
 const initialState: FormState = {
-  formValues: [],
+  formValues: items,
 };
 
 const formSlice = createSlice({

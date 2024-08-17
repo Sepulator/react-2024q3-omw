@@ -12,8 +12,9 @@
   box-shadow: 0 2.4rem 4.8rem rgba(var(--shadow-link-hover), 0.15);
 }
 
-.cardIimg {
+.cardImg {
   width: 40%;
+  object-fit: cover;
 }
 
 .cardContent {
