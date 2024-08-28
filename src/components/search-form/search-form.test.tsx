@@ -1,4 +1,4 @@
-import { setup } from '@/tests/setupTests';
+import { setup } from '@/src/tests/setupTests';
 import { screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { SearchForm } from './search-form';

@@ -22,10 +22,10 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'prettier',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs', '*.config.ts'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', '*.config.*'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: 'tsconfig.app.json',
+    project: 'tsconfig.json',
   },
   rules: {
     'react-compiler/react-compiler': 'error',

@@ -1,10 +1,10 @@
-import { useAppDispatch, useAppSelector } from '@/services/hooks';
+import { useAppDispatch, useAppSelector } from '@/src/services/hooks';
 import './basket.css';
 import {
   removeAllCharacters,
   selectCharacters,
-} from '@/services/characterSlice';
-import { getDownloadURL } from '@/libs/download-csv';
+} from '@/src/services/characterSlice';
+import { getDownloadURL } from '@/src/libs/download-csv';
 
 export function Basket() {
   const dispatch = useAppDispatch();

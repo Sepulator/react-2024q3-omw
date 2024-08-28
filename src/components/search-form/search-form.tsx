@@ -2,7 +2,7 @@ import { useSearchParams } from 'react-router-dom';
 import { ChangeEvent } from 'react';
 
 import './search-form.css';
-import { useLocalStorage } from '@/hooks/use-local-storage';
+import { useLocalStorage } from '@/src/hooks/use-local-storage';
 
 export function SearchForm() {
   const [_, setSearchParams] = useSearchParams();

@@ -2,8 +2,8 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import Theme from '../theme';
-import { ThemeContextProps } from '@/interfaces/themes';
-import { ThemeContext } from '@/context/context';
+import { ThemeContextProps } from '@/src/interfaces/themes';
+import { ThemeContext } from '@/src/context/context';
 
 describe('Header component', () => {
   const theme: ThemeContextProps = {

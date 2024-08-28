@@ -1,5 +1,5 @@
-import { ThemeProvider } from '@/context/theme-provider';
-import { store } from '@/services/store';
+import { ThemeProvider } from '@/src/context/theme-provider';
+import { store } from '@/src/services/store';
 import { ReactNode } from 'react';
 import { Provider } from 'react-redux';
 

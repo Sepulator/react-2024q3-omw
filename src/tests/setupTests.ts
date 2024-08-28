@@ -4,7 +4,7 @@ import { render, RenderOptions, RenderResult } from '@testing-library/react';
 import { expect, afterEach } from 'vitest';
 
 import { server } from './node';
-import AllProviders from '@/components/all-providers';
+import AllProviders from '@/src/components/all-providers';
 import userEvent, { UserEvent } from '@testing-library/user-event';
 
 type SetupReturn = {

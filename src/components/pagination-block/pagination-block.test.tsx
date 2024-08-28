@@ -1,9 +1,9 @@
-import { setup } from '@/tests/setupTests';
+import { setup } from '@/src/tests/setupTests';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { RouterProvider } from 'react-router-dom';
 
-import { router } from '@/main';
+import { router } from '@/src/main';
 
 describe('Pagination Block component', () => {
   const renderer = () => {

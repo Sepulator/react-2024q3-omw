@@ -1,4 +1,4 @@
-import { useTheme } from '@/context/context';
+import { useTheme } from '@/src/context/context';
 
 import SunLogo from '@assets/sun.svg';
 import MoonLogo from '@assets/moon.svg';

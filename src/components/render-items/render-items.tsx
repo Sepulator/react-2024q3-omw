@@ -1,13 +1,13 @@
 import { ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Character } from '@/interfaces/api-types';
+import { Character } from '@/src/interfaces/api-types';
 import {
   addCharacter,
   removeCharacter,
   selectCharacters,
-} from '@/services/characterSlice';
-import { useAppDispatch, useAppSelector } from '@/services/hooks';
+} from '@/src/services/characterSlice';
+import { useAppDispatch, useAppSelector } from '@/src/services/hooks';
 
 type Props = {
   characters: Array<Character>;

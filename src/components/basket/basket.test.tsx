@@ -1,8 +1,9 @@
 import { screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 
-import { setup } from '@/tests/setupTests';
+
 import CardList from '../card-list';
+import { setup } from '@/src/tests/setupTests';
 
 describe('Basket component', () => {
   const renderer = () => {

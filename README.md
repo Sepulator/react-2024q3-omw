@@ -1,6 +1,6 @@
-# Redux. Redux Toolkit, RTK Query. Context api.
+# Next.js Pages Api Integration.
 
-[Task link](https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/tasks/redux.md)
+[Task link](https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/tasks/nextjs-ssr-ssg.md)
 
 ## Install dependencies:
 
