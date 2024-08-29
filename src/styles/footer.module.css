@@ -1,4 +1,4 @@
-footer {
+.footer {
   height: 9.6rem;
   background-color: var(--accent-bg);
   display: grid;
@@ -7,11 +7,11 @@ footer {
   padding: 0 9.6rem;
 }
 
-footer a:last-child {
+.footer a:last-child {
   justify-self: end;
 }
 
-footer p {
+.footer p {
   font-size: 2.4rem;
   font-weight: 500;
   justify-self: center;

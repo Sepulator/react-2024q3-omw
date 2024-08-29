@@ -1,9 +1,9 @@
-import { endpoints } from '@/src/services/rickandmorty-api';
-import { setup } from '@/src/tests/setupTests';
+import { endpoints } from '@/services/rickandmorty-api';
+import { setup } from '@/tests/setupTests';
 import { userEvent } from '@testing-library/user-event';
 import { screen, waitFor } from '@testing-library/react';
 import { createMemoryRouter, RouterProvider } from 'react-router-dom';
-import { routes } from '@/src/main';
+import { routes } from '@/main';
 
 describe('Card Item component', () => {
   const renderer = (characterId = '1') => {

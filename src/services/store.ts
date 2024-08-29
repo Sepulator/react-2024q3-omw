@@ -1,16 +1,9 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { rickAndMortyApi } from './rickandmorty-api';
+import { configureStore } from '@reduxjs/toolkit';
+
 import characterReducer from './characterSlice';
 
-const rootReducer = combineReducers({
-  characters: characterReducer,
-  [rickAndMortyApi.reducerPath]: rickAndMortyApi.reducer,
-});
-
 export const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(rickAndMortyApi.middleware),
+  reducer: { characters: characterReducer },
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -1,4 +1,4 @@
-header {
+.header {
   height: 9.6rem;
   background-color: var(--accent-bg);
   display: grid;
@@ -7,7 +7,7 @@ header {
   padding: 0 9.6rem;
 }
 
-header a {
+.header a {
   display: inline-block;
 }
 
@@ -16,7 +16,7 @@ header a {
   margin-right: 0;
 }
 
-.btn-theme {
+.btnTheme {
   background-color: var(--accent-bg);
   border: none;
   cursor: pointer;
@@ -25,11 +25,11 @@ header a {
   border-radius: 50%;
 }
 
-.logo-theme {
+.logoTheme {
   height: 4rem;
   color: var(--black);
 }
 
-.logo-theme:hover {
+.logoTheme:hover {
   color: var(--white);
 }

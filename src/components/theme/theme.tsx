@@ -1,25 +1,39 @@
-import { useTheme } from '@/src/context/context';
+import Image from 'next/image';
 
-import SunLogo from '@assets/sun.svg';
-import MoonLogo from '@assets/moon.svg';
+import { useTheme } from '@/context/context';
+import s from '@/styles/header.module.css';
 
 export function Theme() {
   const { themeType, toggleTheme } = useTheme();
 
   return (
-    <div className="theme">
+    <div className={s.theme}>
       <button
         title="Switch between dark and light mode"
         type="button"
         data-testid="themBtn"
-        className="btn btn-theme"
+        className={`btn ${s.btnTheme}`}
         aria-label={themeType}
         onClick={() => toggleTheme(themeType)}
       >
         {themeType === 'dark' ? (
-          <SunLogo className="logo logo-theme" data-testid="sunLogo" />
+          <Image
+            src="/sun.svg"
+            className={`logo ${s.logoTheme}`}
+            data-testid="sunLogo"
+            alt="Sun logo"
+            height={40}
+            width={40}
+          />
         ) : (
-          <MoonLogo className="logo logo-theme" data-testid="moonLogo" />
+          <Image
+            src="/moon.svg"
+            className={`logo ${s.logoTheme}`}
+            data-testid="moonLogo"
+            alt="Moon logo"
+            height={40}
+            width={40}
+          />
         )}
       </button>
     </div>

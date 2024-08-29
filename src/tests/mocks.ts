@@ -1,4 +1,4 @@
-import { Character, Info } from '@/src/interfaces/api-types';
+import { Character, Info } from '@/interfaces/api-types';
 
 export const mockCharacters: Info<Array<Character>> = {
   info: {

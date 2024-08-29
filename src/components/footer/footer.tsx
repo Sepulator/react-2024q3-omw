@@ -1,19 +1,29 @@
-import './footer.css';
+import Image from 'next/image';
 
-import RsLogo from '@assets/rs_school_js.svg';
-import GitHub from '@assets/github.svg';
-
+import s from '@/styles/footer.module.css';
 export function Footer() {
   const date = new Date().getFullYear();
 
   return (
-    <footer>
+    <footer className={s.footer}>
       <a href="https://rs.school/">
-        <RsLogo className="logo" />
+        <Image
+          src="/rs_school_js.svg"
+          alt="RS-School logo"
+          height={60}
+          width={180}
+          className="logo"
+        />
       </a>
       <p>&copy; {date}</p>
       <a href="https://github.com/Sepulator/">
-        <GitHub className="logo" />
+        <Image
+          src="/github.svg"
+          alt="Github logo"
+          width={60}
+          height={60}
+          className="logo"
+        />
       </a>
     </footer>
   );

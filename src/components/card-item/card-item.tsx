@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import './card-item.css';
 import Close from '@assets/x-mark.svg';
 import { LoaderSpinner, RenderError } from '../card-list/card-list';
-import { useGetCharacterQuery } from '@/src/services/rickandmorty-api';
+import { useGetCharacterQuery } from '@/services/rickandmorty-api';
 
 export function CardItem() {
   const navigate = useNavigate();

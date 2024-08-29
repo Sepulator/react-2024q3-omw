@@ -1,20 +1,21 @@
-import { useSearchParams } from 'react-router-dom';
 import { ChangeEvent } from 'react';
+import { useRouter } from 'next/router';
 
-import './search-form.css';
-import { useLocalStorage } from '@/src/hooks/use-local-storage';
+import s from '@/styles/search-form.module.css';
+import { useLocalStorage } from '@/hooks/use-local-storage';
 
 export function SearchForm() {
-  const [_, setSearchParams] = useSearchParams();
+  const router = useRouter();
+  const pathName = router.pathname;
   const [query, setQuery] = useLocalStorage<string>('');
 
   const onSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSearchParams({ name: query });
+    void router.push(`${pathName}?name=${query}`);
   };
 
   return (
-    <form className="search-form" onSubmit={onSubmit}>
+    <form className={s.searchForm} onSubmit={onSubmit}>
       <input
         type="text"
         name="text"

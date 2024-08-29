@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { ThemeContext } from './context';
-import { ThemeType } from '@/src/interfaces/themes';
+import { ThemeType } from '@/interfaces/themes';
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<ThemeType>('light');

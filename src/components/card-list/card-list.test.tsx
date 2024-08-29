@@ -1,5 +1,5 @@
-import { router } from '@/src/main';
-import { setup } from '@/src/tests/setupTests';
+import { router } from '@/main';
+import { setup } from '@/tests/setupTests';
 import { screen } from '@testing-library/react';
 import { RouterProvider } from 'react-router-dom';
 

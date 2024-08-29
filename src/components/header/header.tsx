@@ -1,14 +1,21 @@
-import './header.css';
-import Logo from '@assets/logo.svg';
-import SearchForm from '@components/search-form';
-import Theme from '../theme';
+import Image from 'next/image';
+
+import s from '@/styles/header.module.css';
+import Theme from '@/components/theme';
+import SearchForm from '@/components/search-form';
 
 export function Header() {
   return (
-    <header>
+    <header className={s.header}>
       <div>
         <a href="https://rickandmortyapi.com/">
-          <Logo className="logo" />
+          <Image
+            src="logo.svg"
+            alt="Api logo"
+            className="logo"
+            height={60}
+            width={60}
+          />
         </a>
       </div>
       <SearchForm />

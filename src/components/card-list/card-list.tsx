@@ -1,12 +1,12 @@
 import { useLocation } from 'react-router-dom';
 
 import './card-list.css';
-import Basket from '@/src/components/basket';
-import RenderItems from '@/src/components/render-items';
-import PaginationBlock from '@/src/components/pagination-block';
-import { useAppSelector } from '@/src/services/hooks';
-import { useGetCharactersQuery } from '@/src/services/rickandmorty-api';
-import { selectCharacters } from '@/src/services/characterSlice';
+import Basket from '@/components/basket';
+import RenderItems from '@/components/render-items';
+import PaginationBlock from '@/components/pagination-block';
+import { useAppSelector } from '@/services/hooks';
+import { useGetCharactersQuery } from '@/services/rickandmorty-api';
+import { selectCharacters } from '@/services/characterSlice';
 
 export function CardList() {
   const query = useLocation().search;

@@ -1,8 +1,14 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/src*": [
-        "./src*"
+      "@/*": [
+        "./src/*"
+      ],
+      "@/styles/*": [
+        "./src/styles/*"
+      ],
+      "@/components/*": [
+        "./src/components/*"
       ]
     },
     "composite": true,
@@ -45,7 +51,6 @@
     "esModuleInterop": true
   },
   "include": [
-    "./src",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
