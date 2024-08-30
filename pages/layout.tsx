@@ -1,10 +1,11 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { ReactElement } from 'react';
 
 import Footer from '@/components/footer';
 import Header from '@/components/header';
-import { Character, Info } from '@/interfaces/api-types';
 import CardList from '@/components/card-list';
+import { Character, Info } from '@/interfaces/api-types';
 
 type Props = {
   data: Info<Character[]>;
@@ -12,6 +13,9 @@ type Props = {
 };
 
 export default function Layout({ children, data }: Props) {
+  const router = useRouter();
+  const isPatchCharacter = router.pathname.includes('/character/');
+
   return (
     <>
       <Head>
@@ -21,7 +25,7 @@ export default function Layout({ children, data }: Props) {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Header />
-      <main className="container">
+      <main className={`container ${isPatchCharacter ? 'opened' : ''}`}>
         <div>
           <CardList data={data} />
         </div>

@@ -1,37 +1,40 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
-import './card-item.css';
-import Close from '@assets/x-mark.svg';
+import s from '@/styles/card-item.module.css';
 import { LoaderSpinner, RenderError } from '../card-list/card-list';
-import { useGetCharacterQuery } from '@/services/rickandmorty-api';
+import { Character } from '@/interfaces/api-types';
 
-export function CardItem() {
-  const navigate = useNavigate();
-  const { characterId = '1' } = useParams();
-  const { data, isLoading, isFetching } = useGetCharacterQuery(characterId);
+type Props = {
+  character: Character;
+};
 
-  if (isFetching || isLoading) return <LoaderSpinner />;
-  if (!data) return <RenderError error="Character not found" />;
+export function CardItem({ character }: Props) {
+  const router = useRouter();
+  const query = router.asPath;
 
-  const { image, name, status, gender, species, location } = data;
+  if (character?.error) return <RenderError error="Character not found" />;
+  if (!character) return <LoaderSpinner />;
+
+  const { image, name, status, gender, species, location } = character;
 
   return (
-    <div className="card">
-      <img src={image} alt={name} className="card-img" />
-      <div className="card-content">
-        <ul className="card-attributes">
-          <li className="card-attribute">
-            <h2 className="card-title">{name}</h2>
+    <div className={s.card}>
+      <img src={image} alt={name} className={s.cardImg} />
+      <div className={s.cardContent}>
+        <ul className={s.cardAttributes}>
+          <li className={s.cardAttribute}>
+            <h2 className={s.cardTitle}>{name}</h2>
             <p>
               {status} &mdash; {species}
             </p>
           </li>
-          <li className="card-attribute">
-            <p className="subtitle">Gender:</p>
+          <li className={s.cardAttribute}>
+            <p className={s.subtitle}>Gender:</p>
             <p>{gender}</p>
           </li>
-          <li className="card-attribute">
-            <p className="subtitle">Last known location:</p>
+          <li className={s.cardAttribute}>
+            <p className={s.subtitle}>Last known location:</p>
             <p>{location.name}</p>
           </li>
         </ul>
@@ -39,9 +42,15 @@ export function CardItem() {
           className="btn btn-close"
           data-testid="closeBtn"
           type="button"
-          onClick={() => navigate('/')}
+          onClick={() => void router.push(`/${query}`)}
         >
-          <Close className="logo logo-close" />
+          <Image
+            src="/x-mark.svg"
+            alt="Close button"
+            width={40}
+            height={40}
+            className={`logo ${s.logoClose}`}
+          />
         </button>
       </div>
     </div>

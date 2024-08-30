@@ -43,6 +43,7 @@ export interface Character extends ResourceBase {
   location: CharacterLocation;
   image: string;
   episode: string[];
+  error?: string;
 }
 
 export interface Location extends ResourceBase {
@@ -79,3 +80,5 @@ export const endpoints: Endpoints = {
   episode: '/episode/',
   location: '/location/',
 };
+
+export const baseUrl = 'https://rickandmortyapi.com/api/';

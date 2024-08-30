@@ -5,33 +5,47 @@ import type {
   InferGetServerSidePropsType,
 } from 'next';
 
-import Layout from './layout';
 import { baseUrl, Character, endpoints, Info } from '@/interfaces/api-types';
+import Layout from '../layout';
+import CardItem from '@/components/card-item';
 
 type Props = {
+  character: Character;
   data: Info<Character[]>;
 };
 
 export const getServerSideProps = (async (
   context: GetServerSidePropsContext
 ) => {
+  const { characterId } = context.params as { characterId: string };
+
+  const resCharacter = await fetch(
+    `${baseUrl}${endpoints.character}${characterId}`
+  );
+  const character = (await resCharacter.json()) as Character;
+
   const query = context.query as Record<string, string>;
   const searchParams = new URLSearchParams(query);
-  const res = await fetch(
+  const resData = await fetch(
     `${baseUrl}${endpoints.character}?${searchParams.toString()}`
   );
-
-  const data = (await res.json()) as Info<Character[]>;
+  const data = (await resData.json()) as Info<Character[]>;
 
   return {
     props: {
+      character,
       data,
     },
   };
 }) satisfies GetServerSideProps<Props>;
 
-export default function Home({
+export default function CharacterInfo({
+  character,
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  return <Layout data={data} />;
+  return (
+    <Layout data={data}>
+      <CardItem character={character} />
+    </Layout>
+  );
 }
