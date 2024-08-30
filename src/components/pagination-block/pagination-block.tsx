@@ -34,8 +34,8 @@ export function PaginationBlock({ info }: Props) {
           src="/chevron-left.svg"
           alt="Chevron left"
           className="logo"
-          width={60}
-          height={60}
+          width={40}
+          height={40}
         />
       </button>
       <button
@@ -49,8 +49,8 @@ export function PaginationBlock({ info }: Props) {
           src="/chevron-right.svg"
           alt="Chevron left"
           className="logo"
-          width={60}
-          height={60}
+          width={40}
+          height={40}
         />
       </button>
     </div>

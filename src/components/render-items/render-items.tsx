@@ -27,7 +27,7 @@ export function RenderItems({ characters }: Props) {
       <label
         htmlFor={`checkbox-${character.id}`}
         aria-label={`checkbox-${character.id}`}
-        className={s.cardSmallLabel}
+        className={b.cardSmallLabel}
       >
         <input
           type="checkbox"
@@ -42,7 +42,7 @@ export function RenderItems({ characters }: Props) {
         />
       </label>
       <Link href={`character/${character.id}`} className={s.cardSmall}>
-        <p className={s.cardTitle}>{character.name}</p>
+        <p className={b.cardTitle}>{character.name}</p>
       </Link>
     </div>
   ));

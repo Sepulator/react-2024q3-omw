@@ -15,7 +15,8 @@
   text-align: center;
 }
 
-.basketBlock .btn {
+.basketBlock button,
+.basketBlock a {
   padding-left: 2rem;
   padding-right: 2rem;
 }
