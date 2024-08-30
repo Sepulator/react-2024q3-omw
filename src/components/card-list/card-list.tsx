@@ -1,28 +1,31 @@
-import { useLocation } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
-import './card-list.css';
+import s from '@/styles/card-list.module.css';
 import Basket from '@/components/basket';
 import RenderItems from '@/components/render-items';
 import PaginationBlock from '@/components/pagination-block';
 import { useAppSelector } from '@/services/hooks';
-import { useGetCharactersQuery } from '@/services/rickandmorty-api';
 import { selectCharacters } from '@/services/characterSlice';
+import { Character, Info } from '@/interfaces/api-types';
 
-export function CardList() {
-  const query = useLocation().search;
+type Props = {
+  data: Info<Character[]>;
+};
+
+export function CardList({ data }: Props) {
+  const router = useRouter();
   const characters = useAppSelector(selectCharacters);
-  const { data, isLoading, isFetching, error } = useGetCharactersQuery(query);
-  const location = useLocation();
-  const isPathCharacter = location.pathname.includes('/character/');
+  const { results, error } = data;
+  const location = router.pathname;
+  const isPathCharacter = location.includes('/character/');
 
-  if (isFetching || isLoading) return <LoaderSpinner />;
-  if (!data?.results || error)
-    return <RenderError error="There is nothing here" />;
+  if (!results && !error) return <LoaderSpinner />;
+  if (!results || error) return <RenderError error="There is nothing here" />;
 
   return (
     <>
-      <div className={`card-list mb-sm ${isPathCharacter ? 'opened' : ''}`}>
-        {<RenderItems characters={data.results} />}
+      <div className={`${s.cardList} mb-sm ${isPathCharacter ? s.opened : ''}`}>
+        <RenderItems characters={results} />
       </div>
       {data.info && <PaginationBlock info={data.info} />}
       {characters.length ? <Basket /> : ''}
@@ -32,7 +35,7 @@ export function CardList() {
 
 export function RenderError({ error }: { error: string }) {
   return (
-    <div className="center">
+    <div className={s.center}>
       <h1 data-testid="error">{error}</h1>
     </div>
   );
@@ -40,8 +43,8 @@ export function RenderError({ error }: { error: string }) {
 
 export function LoaderSpinner() {
   return (
-    <div className="center">
-      <div className="loader" data-testid="loader"></div>
+    <div className={s.center}>
+      <div className={s.loader} data-testid="loader"></div>
     </div>
   );
 }

@@ -1,11 +1,5 @@
-import { Character, Endpoints, Info } from '@/interfaces/api-types';
+import { Character, endpoints, Info } from '@/interfaces/api-types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
-export const endpoints: Endpoints = {
-  character: '/character/',
-  episode: '/episode/',
-  location: '/location/',
-};
 
 const baseUrl = 'https://rickandmortyapi.com/api';
 

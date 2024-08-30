@@ -1,4 +1,4 @@
-.basket-block {
+.basketBlock {
   z-index: 1;
   bottom: calc(1% + 9.6rem);
   right: 1%;
@@ -11,11 +11,11 @@
   border-radius: 9px;
 }
 
-.basket-block p {
+.basketBlock p {
   text-align: center;
 }
 
-.basket-block .btn {
+.basketBlock .btn {
   padding-left: 2rem;
   padding-right: 2rem;
 }

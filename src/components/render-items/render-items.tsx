@@ -1,5 +1,5 @@
+import Link from 'next/link';
 import { ChangeEvent } from 'react';
-import { Link } from 'react-router-dom';
 
 import { Character } from '@/interfaces/api-types';
 import {
@@ -8,6 +8,8 @@ import {
   selectCharacters,
 } from '@/services/characterSlice';
 import { useAppDispatch, useAppSelector } from '@/services/hooks';
+import s from '@/styles/card-list.module.css';
+import b from '@/styles/card-item.module.css';
 
 type Props = {
   characters: Array<Character>;
@@ -21,16 +23,16 @@ export function RenderItems({ characters }: Props) {
     selectedCharacters.some((item) => item.id === character.id);
 
   return characters.map((character) => (
-    <div className="card card-small--block" key={character.id}>
+    <div className={`${b.card} ${s.cardSmallBlock}`} key={character.id}>
       <label
         htmlFor={`checkbox-${character.id}`}
         aria-label={`checkbox-${character.id}`}
-        className="card-small--label"
+        className={s.cardSmallLabel}
       >
         <input
           type="checkbox"
           id={`checkbox-${character.id}`}
-          className="card-small--input"
+          className={s.cardSmallInput}
           onChange={(e: ChangeEvent<HTMLInputElement>) => {
             e.target.checked
               ? dispatch(addCharacter(character))
@@ -39,8 +41,8 @@ export function RenderItems({ characters }: Props) {
           checked={isChecked(character)}
         />
       </label>
-      <Link to={`character/${character.id}`} className="card-small">
-        <p className="card-title">{character.name}</p>
+      <Link href={`character/${character.id}`} className={s.cardSmall}>
+        <p className={s.cardTitle}>{character.name}</p>
       </Link>
     </div>
   ));

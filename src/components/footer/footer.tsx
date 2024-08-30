@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import s from '@/styles/footer.module.css';
+
 export function Footer() {
   const date = new Date().getFullYear();
 
@@ -13,6 +14,7 @@ export function Footer() {
           height={60}
           width={180}
           className="logo"
+          priority
         />
       </a>
       <p>&copy; {date}</p>

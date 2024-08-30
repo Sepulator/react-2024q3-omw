@@ -1,10 +1,12 @@
 import { useAppDispatch, useAppSelector } from '@/services/hooks';
-import './basket.css';
+
 import {
   removeAllCharacters,
   selectCharacters,
 } from '@/services/characterSlice';
 import { getDownloadURL } from '@/libs/download-csv';
+import s from '@/styles/basket.module.css';
+import b from '@/styles/card-item.module.css';
 
 export function Basket() {
   const dispatch = useAppDispatch();
@@ -12,8 +14,8 @@ export function Basket() {
   const length = characters.length;
 
   return (
-    <div className="basket-block">
-      <p className="card-title">
+    <div className={s.basketBlock}>
+      <p className={b.cardTitle}>
         {length} item{length > 1 ? 's' : ''}
       </p>
       <button

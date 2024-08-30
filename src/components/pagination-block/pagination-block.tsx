@@ -1,8 +1,7 @@
-import { useNavigate } from 'react-router-dom';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
-import './pagination-block.css';
-import ChevronLeft from '@assets/chevron-left.svg';
-import ChevronRight from '@assets/chevron-right.svg';
+import s from '@/styles/pagination-block.module.css';
 
 type Props = {
   info: {
@@ -14,16 +13,16 @@ type Props = {
 };
 
 export function PaginationBlock({ info }: Props) {
-  const navigate = useNavigate();
+  const router = useRouter();
   const navigateToUrl = (urlToNavigate: string) => {
     const path = new URL(urlToNavigate).search.replace('/character/', '');
-    navigate(`/${path}`);
+    void router.push(`/${path}`);
   };
 
   const { next, prev } = info;
 
   return (
-    <div className="pagination-block">
+    <div className={s.paginationBlock}>
       <button
         className="btn"
         type="button"
@@ -31,7 +30,13 @@ export function PaginationBlock({ info }: Props) {
         disabled={!prev}
         onClick={() => prev && navigateToUrl(prev)}
       >
-        <ChevronLeft className="logo" />
+        <Image
+          src="/chevron-left.svg"
+          alt="Chevron left"
+          className="logo"
+          width={60}
+          height={60}
+        />
       </button>
       <button
         className="btn"
@@ -40,7 +45,13 @@ export function PaginationBlock({ info }: Props) {
         data-testid="btnNext"
         onClick={() => next && navigateToUrl(next)}
       >
-        <ChevronRight className="logo" />
+        <Image
+          src="/chevron-right.svg"
+          alt="Chevron left"
+          className="logo"
+          width={60}
+          height={60}
+        />
       </button>
     </div>
   );
