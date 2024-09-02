@@ -53,13 +53,6 @@
   display: flex;
 }
 
-.main.opened {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  padding: 6.4rem 0;
-  gap: 9rem;
-}
-
 .noWrap {
   overflow: hidden;
   text-overflow: ellipsis;

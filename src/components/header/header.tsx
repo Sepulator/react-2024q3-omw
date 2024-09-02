@@ -10,7 +10,7 @@ export function Header() {
       <div>
         <a href="https://rickandmortyapi.com/">
           <Image
-            src="logo.svg"
+            src="/logo.svg"
             alt="Api logo"
             className="logo"
             height={60}

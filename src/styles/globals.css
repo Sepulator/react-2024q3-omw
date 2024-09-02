@@ -78,6 +78,13 @@ main {
   position: relative;
 }
 
+main.opened {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: 6.4rem 0;
+  gap: 9rem;
+}
+
 a {
   position: relative;
   font-weight: 500;

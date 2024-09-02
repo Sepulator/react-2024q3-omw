@@ -11,7 +11,6 @@ type Props = {
 
 export function CardItem({ character }: Props) {
   const router = useRouter();
-  const query = router.asPath;
 
   if (character?.error) return <RenderError error="Character not found" />;
   if (!character) return <LoaderSpinner />;
@@ -39,10 +38,10 @@ export function CardItem({ character }: Props) {
           </li>
         </ul>
         <button
-          className="btn btn-close"
+          className={`btn ${s.btnClose}`}
           data-testid="closeBtn"
           type="button"
-          onClick={() => void router.push(`/${query}`)}
+          onClick={() => void router.push('/')}
         >
           <Image
             src="/x-mark.svg"

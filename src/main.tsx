@@ -10,7 +10,7 @@ import './index.css';
 import ErrorBoundary from './components/error-boundary/index.ts';
 import MainPage from './pages/main-page/index.ts';
 import ErrorPage from './pages/error-page/index.ts';
-import CardItem from './components/card-item/index.ts';
+// import CardItem from './components/card-item/index.ts';
 import AllProviders from './components/all-providers/index.ts';
 
 export const routes: RouteObject[] = [
@@ -18,12 +18,12 @@ export const routes: RouteObject[] = [
     path: '/',
     element: <MainPage />,
     errorElement: <ErrorPage />,
-    children: [
-      {
-        path: 'character/:characterId',
-        element: <CardItem />,
-      },
-    ],
+    // children: [
+    //   {
+    //     path: 'character/:characterId',
+    //     element: <CardItem />,
+    //   },
+    // ],
   },
 ];
 

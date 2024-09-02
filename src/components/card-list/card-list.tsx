@@ -17,7 +17,7 @@ export function CardList({ data }: Props) {
   const characters = useAppSelector(selectCharacters);
   const { results, error } = data;
   const location = router.pathname;
-  const isPathCharacter = location.includes('/character/');
+  const isPathCharacter = location.includes('character');
 
   if (!results && !error) return <LoaderSpinner />;
   if (!results || error) return <RenderError error="There is nothing here" />;

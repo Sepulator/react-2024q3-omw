@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { ChangeEvent } from 'react';
-import { useRouter } from 'next/router';
 
 import { Character } from '@/interfaces/api-types';
 import {
@@ -17,8 +16,6 @@ type Props = {
 };
 
 export function RenderItems({ characters }: Props) {
-  const router = useRouter();
-  const query = router.asPath;
   const dispatch = useAppDispatch();
   const selectedCharacters = useAppSelector(selectCharacters);
 
@@ -44,7 +41,7 @@ export function RenderItems({ characters }: Props) {
           checked={isChecked(character)}
         />
       </label>
-      <Link href={`character/${character.id}${query}`} className={s.cardSmall}>
+      <Link href={`/character/${character.id}`} className={s.cardSmall}>
         <p className={b.cardTitle}>{character.name}</p>
       </Link>
     </div>

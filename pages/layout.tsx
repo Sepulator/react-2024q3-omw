@@ -14,7 +14,7 @@ type Props = {
 
 export default function Layout({ children, data }: Props) {
   const router = useRouter();
-  const isPatchCharacter = router.pathname.includes('/character/');
+  const isPatchCharacter = router.pathname.includes('character');
 
   return (
     <>
