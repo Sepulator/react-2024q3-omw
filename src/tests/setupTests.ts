@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import * as matchers from '@testing-library/jest-dom/matchers';
 import { render, RenderOptions, RenderResult } from '@testing-library/react';
-import { expect, afterEach } from 'vitest';
+import { expect, afterEach, vi } from 'vitest';
 
 import { server } from './node';
 import AllProviders from '@/components/all-providers';
@@ -12,6 +12,7 @@ type SetupReturn = {
 } & RenderResult;
 
 expect.extend(matchers);
+vi.mock('next/router', () => vi.importActual('next-router-mock'));
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
