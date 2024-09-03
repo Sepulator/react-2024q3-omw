@@ -7,7 +7,7 @@ type Props = {
   children: ReactNode;
 };
 
-export function AllProviders({ children }: Props) {
+export default function AllProviders({ children }: Props) {
   return (
     <ThemeProvider>
       <Provider store={store}>{children}</Provider>

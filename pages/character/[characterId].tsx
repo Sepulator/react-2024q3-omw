@@ -1,16 +1,12 @@
 /* eslint-disable react-refresh/only-export-components */
-import type {
-  GetServerSidePropsContext,
-  GetServerSideProps,
-  InferGetServerSidePropsType,
-} from 'next';
+import type { GetServerSidePropsContext, GetServerSideProps } from 'next';
 
 import { baseUrl, Character, endpoints, Info } from '@/interfaces/api-types';
 import Layout from '../layout';
 import CardItem from '@/components/card-item';
 
 type Props = {
-  character: Character;
+  character: Character | null;
   data: Info<Character[]>;
 };
 
@@ -39,10 +35,7 @@ export const getServerSideProps = (async (
   };
 }) satisfies GetServerSideProps<Props>;
 
-export default function CharacterInfo({
-  character,
-  data,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function CharacterInfo({ character, data }: Props) {
   return (
     <Layout data={data}>
       <CardItem character={character} />

@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 import s from '@/styles/footer.module.css';
 
-export function Footer() {
+export default function Footer() {
   const date = new Date().getFullYear();
 
   return (

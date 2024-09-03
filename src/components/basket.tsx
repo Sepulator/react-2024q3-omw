@@ -8,7 +8,7 @@ import { getDownloadURL } from '@/libs/download-csv';
 import s from '@/styles/basket.module.css';
 import b from '@/styles/card-item.module.css';
 
-export function Basket() {
+export default function Basket() {
   const dispatch = useAppDispatch();
   const characters = useAppSelector(selectCharacters);
   const length = characters.length;

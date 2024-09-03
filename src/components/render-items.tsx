@@ -15,7 +15,7 @@ type Props = {
   characters: Array<Character>;
 };
 
-export function RenderItems({ characters }: Props) {
+export default function RenderItems({ characters }: Props) {
   const dispatch = useAppDispatch();
   const selectedCharacters = useAppSelector(selectCharacters);
 
