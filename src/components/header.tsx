@@ -4,7 +4,7 @@ import s from '@/styles/header.module.css';
 import Theme from '@/components/theme';
 import SearchForm from '@/components/search-form';
 
-export function Header() {
+export default function Header() {
   return (
     <header className={s.header}>
       <div>

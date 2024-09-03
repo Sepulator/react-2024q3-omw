@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import s from '@/styles/search-form.module.css';
 import { useLocalStorage } from '@/hooks/use-local-storage';
 
-export function SearchForm() {
+export default function SearchForm() {
   const router = useRouter();
   const pathName = router.pathname;
   const [query, setQuery] = useLocalStorage<string>('');

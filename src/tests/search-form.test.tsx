@@ -1,15 +1,10 @@
+import SearchForm from '@/components/search-form';
 import { setup } from '@/tests/setupTests';
 import { screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-import { SearchForm } from './search-form';
 
 describe('Search form component', () => {
   const renderer = () => {
-    return setup(
-      <BrowserRouter>
-        <SearchForm />
-      </BrowserRouter>
-    );
+    return setup(<SearchForm />);
   };
 
   afterEach(() => {

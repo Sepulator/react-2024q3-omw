@@ -12,7 +12,7 @@ type Props = {
   data: Info<Character[]>;
 };
 
-export function CardList({ data }: Props) {
+export default function CardList({ data }: Props) {
   const router = useRouter();
   const characters = useAppSelector(selectCharacters);
   const { results, error } = data;

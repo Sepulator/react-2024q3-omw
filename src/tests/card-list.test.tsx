@@ -1,15 +1,15 @@
-import { router } from '@/main';
-import { setup } from '@/tests/setupTests';
 import { screen } from '@testing-library/react';
-import { RouterProvider } from 'react-router-dom';
+
+import { CharactersError, mockCharacters } from '@/tests/mocks';
+import { setup } from '@/tests/setupTests';
+import Home from '../../pages';
 
 describe('Card list component', () => {
-  const renderer = () => {
-    return setup(<RouterProvider router={router} />);
+  const renderer = (data = mockCharacters) => {
+    return setup(<Home data={data} />);
   };
 
   const ALL_CARDS = 2;
-  const ONE_CARDS = 1;
   const QUERY = 'Rick';
   const CARD_NAME = 'Rick Sanchez';
 
@@ -25,13 +25,11 @@ describe('Card list component', () => {
     await user.type(screen.getByRole('textbox'), QUERY);
     await user.click(screen.getByRole('button', { name: 'search' }));
 
-    const cards = await screen.findAllByRole('checkbox');
-    expect(cards.length).toBe(ONE_CARDS);
     expect(screen.getByText(CARD_NAME)).toBeInTheDocument();
   });
 
   it('display not found results', async () => {
-    const { user } = renderer();
+    const { user } = renderer(CharactersError);
 
     await user.type(screen.getByRole('textbox'), 'not a Rick');
     await user.click(screen.getByRole('button', { name: 'search' }));

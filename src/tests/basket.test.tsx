@@ -1,16 +1,12 @@
 import { screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
 
-import CardList from '../card-list';
+import CardList from '../components/card-list';
 import { setup } from '@/tests/setupTests';
+import { mockCharacters } from '@/tests/mocks';
 
 describe('Basket component', () => {
-  const renderer = () => {
-    return setup(
-      <BrowserRouter>
-        <CardList />
-      </BrowserRouter>
-    );
+  const renderer = (data = mockCharacters) => {
+    return setup(<CardList data={data} />);
   };
 
   beforeAll(() => {

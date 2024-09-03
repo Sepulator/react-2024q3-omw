@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useTheme } from '@/context/context';
 import s from '@/styles/header.module.css';
 
-export function Theme() {
+export default function Theme() {
   const { themeType, toggleTheme } = useTheme();
 
   return (

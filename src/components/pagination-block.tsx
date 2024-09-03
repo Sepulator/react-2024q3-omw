@@ -12,7 +12,7 @@ type Props = {
   };
 };
 
-export function PaginationBlock({ info }: Props) {
+export default function PaginationBlock({ info }: Props) {
   const router = useRouter();
   const navigateToUrl = (urlToNavigate: string) => {
     const path = new URL(urlToNavigate).search.replace('/character/', '');

@@ -154,3 +154,13 @@ export const mockCharacters: Info<Array<Character>> = {
     },
   ],
 };
+
+export const CharacterError: Character = {
+  ...mockCharacters.results![0],
+  error: 'Character not found',
+};
+
+export const CharactersError: Info<Array<Character>> = {
+  ...mockCharacters,
+  error: 'There is nothing here',
+};
