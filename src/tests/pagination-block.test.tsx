@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react';
 
 import { setup } from '@/tests/setupTests';
 import { mockCharacters } from '@/tests/mocks';
-import Home from '../../pages';
+import Home from '@/pages';
 
 describe('Pagination block component', () => {
   const renderer = (page = '1') => {

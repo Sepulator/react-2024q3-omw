@@ -3,7 +3,7 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ],
+      ]
     },
     "composite": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
@@ -47,7 +47,8 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "./dist/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

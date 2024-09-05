@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react';
 
 import { CharacterError, mockCharacters } from '@/tests/mocks';
 import { setup } from '@/tests/setupTests';
-import CharacterInfo from '../../pages/character/[characterId]';
+import CharacterInfo from '@/pages/character/[characterId]';
 
 describe('Card item component', () => {
   const renderer = (characterId = '1') => {

@@ -1,5 +1,7 @@
+'use client';
+
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 import s from '@/styles/pagination-block.module.css';
 
@@ -16,6 +18,7 @@ export default function PaginationBlock({ info }: Props) {
   const router = useRouter();
   const navigateToUrl = (urlToNavigate: string) => {
     const path = new URL(urlToNavigate).search.replace('/character/', '');
+
     void router.push(`/${path}`);
   };
 

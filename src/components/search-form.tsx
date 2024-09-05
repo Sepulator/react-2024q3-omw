@@ -1,5 +1,7 @@
+'use client';
+
 import { ChangeEvent } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 import s from '@/styles/search-form.module.css';
 import { useLocalStorage } from '@/hooks/use-local-storage';

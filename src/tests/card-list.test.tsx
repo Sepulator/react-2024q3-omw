@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 
 import { CharactersError, mockCharacters } from '@/tests/mocks';
 import { setup } from '@/tests/setupTests';
-import Home from '../../pages';
+import Home from '@/pages';
 
 describe('Card list component', () => {
   const renderer = (data = mockCharacters) => {
