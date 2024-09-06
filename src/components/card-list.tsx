@@ -20,8 +20,7 @@ export default function CardList({ data }: Props) {
 
   const isPathCharacter = usePathname().includes('character');
 
-  if (!results && !error) return <LoaderSpinner />;
-  if (!results || error) return <RenderError error="There is nothing here" />;
+  if (!results) return <RenderError error={error} />;
 
   return (
     <div>
@@ -34,18 +33,10 @@ export default function CardList({ data }: Props) {
   );
 }
 
-export function RenderError({ error }: { error: string }) {
+export function RenderError({ error }: { error?: string }) {
   return (
     <div className={s.center}>
       <h1 data-testid="error">{error}</h1>
-    </div>
-  );
-}
-
-export function LoaderSpinner() {
-  return (
-    <div className={s.center}>
-      <div className={s.loader} data-testid="loader"></div>
     </div>
   );
 }

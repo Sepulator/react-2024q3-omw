@@ -4,7 +4,6 @@ import { ReactElement } from 'react';
 import { render, RenderOptions, RenderResult } from '@testing-library/react';
 import { expect, vi } from 'vitest';
 
-import { server } from './node';
 import AllProviders from '@/components/all-providers';
 
 type SetupReturn = {
@@ -12,10 +11,6 @@ type SetupReturn = {
 } & RenderResult;
 
 expect.extend(matchers);
-
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
 
 const mockedRouterPush = vi.fn((url: string) => {
   const [pathName, searchParams] = url.split('?');

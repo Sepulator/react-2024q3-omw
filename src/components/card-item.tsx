@@ -4,8 +4,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 import s from '@/styles/card-item.module.css';
-import { LoaderSpinner, RenderError } from './card-list';
 import { Character } from '@/interfaces/api-types';
+import { RenderError } from './card-list';
 
 type Props = {
   character: Character | null;
@@ -14,8 +14,7 @@ type Props = {
 export default function CardItem({ character }: Props) {
   const router = useRouter();
 
-  if (!character) return <LoaderSpinner />;
-  if (character?.error) return <RenderError error="Character not found" />;
+  if (!character) return <RenderError error="Character not found" />;
 
   const { image, name, status, gender, species, location } = character;
 

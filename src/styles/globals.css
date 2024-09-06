@@ -72,16 +72,6 @@ body {
   background-color: var(--bg);
 }
 
-main {
-  min-height: calc(100vh - 9.6rem * 2);
-  padding: 6.4rem 0;
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  padding: 6.4rem 0;
-  gap: 9rem;
-}
-
 a {
   position: relative;
   font-weight: 500;
@@ -93,6 +83,15 @@ a {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+.main {
+  position: relative;
+  min-height: calc(100vh - 9.6rem * 2);
+  padding: 6.4rem 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 9rem;
 }
 
 .container {
