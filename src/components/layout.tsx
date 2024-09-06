@@ -6,7 +6,7 @@ import CardList from '@/components/card-list';
 import { baseUrl, Character, endpoints, Info } from '@/interfaces/api-types';
 
 type Props = {
-  params: Record<string, string>;
+  params?: Record<string, string>;
   children?: ReactElement;
 };
 

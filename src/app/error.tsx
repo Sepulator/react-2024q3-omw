@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 interface Props {
   error: Error & { digest?: string };
-  reset: () => void;
+  reset?: () => void;
 }
 
 export default function ErrorPage({ error }: Props) {

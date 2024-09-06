@@ -5,9 +5,7 @@ import { setup } from '@/tests/setupTests';
 import { mockCharacters } from '@/tests/mocks/mocks';
 
 describe('Basket component', () => {
-  const renderer = (data = mockCharacters) => {
-    return setup(<CardList data={data} />);
-  };
+  const renderer = (data = mockCharacters) => setup(<CardList data={data} />);
 
   beforeAll(() => {
     global.URL.createObjectURL = vi.fn(() => 'blob:http://localhost/blob');

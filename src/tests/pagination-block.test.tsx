@@ -11,7 +11,7 @@ describe('Pagination block component', () => {
       return setup(<PaginationBlock info={mockCharacters.info!} />);
   };
 
-  it('check buttons enable & disable depending on page', async () => {
+  it('check buttons enable & disable depending on page quantity', async () => {
     renderer();
     const user = userEvent.setup();
     expect(await screen.findByTestId('btnPrev')).toBeDisabled();

@@ -3,9 +3,7 @@ import { setup } from '@/tests/setupTests';
 import { screen } from '@testing-library/react';
 
 describe('Search form component', () => {
-  const renderer = () => {
-    return setup(<SearchForm />);
-  };
+  const renderer = () => setup(<SearchForm />);
 
   afterEach(() => {
     localStorage.clear();

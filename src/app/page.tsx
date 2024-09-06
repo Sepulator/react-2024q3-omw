@@ -4,6 +4,6 @@ interface Props {
   searchParams: Record<string, string>;
 }
 
-export default function Home({ searchParams }: Props) {
+export default function HomePage({ searchParams }: Props) {
   return <Layout params={searchParams} />;
 }
