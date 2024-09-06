@@ -20,7 +20,6 @@ async function getCharacters(params: URLSearchParams) {
 }
 
 export default async function Layout({ children, params }: Props) {
-  console.log(params);
   const searchParams = new URLSearchParams(params);
   const data = await getCharacters(searchParams);
 

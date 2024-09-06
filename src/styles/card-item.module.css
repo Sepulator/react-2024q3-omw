@@ -1,6 +1,7 @@
 .card {
   display: flex;
   flex-direction: row;
+  height: fit-content;
   box-shadow: 0 2.4rem 4.8rem rgba(var(--shadow-link), 0.075);
   border-radius: 11px;
   overflow: hidden;

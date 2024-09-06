@@ -24,13 +24,13 @@ export default function CardList({ data }: Props) {
   if (!results || error) return <RenderError error="There is nothing here" />;
 
   return (
-    <>
+    <div>
       <div className={`${s.cardList} mb-sm ${isPathCharacter ? s.opened : ''}`}>
         <RenderItems characters={results} />
       </div>
       {data.info && <PaginationBlock info={data.info} />}
       {characters.length ? <Basket /> : ''}
-    </>
+    </div>
   );
 }
 

@@ -76,11 +76,8 @@ main {
   min-height: calc(100vh - 9.6rem * 2);
   padding: 6.4rem 0;
   position: relative;
-}
-
-main.opened {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr auto;
   padding: 6.4rem 0;
   gap: 9rem;
 }
