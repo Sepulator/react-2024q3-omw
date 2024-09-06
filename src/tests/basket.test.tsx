@@ -2,7 +2,7 @@ import { screen } from '@testing-library/react';
 
 import CardList from '../components/card-list';
 import { setup } from '@/tests/setupTests';
-import { mockCharacters } from '@/tests/mocks';
+import { mockCharacters } from '@/tests/mocks/mocks';
 
 describe('Basket component', () => {
   const renderer = (data = mockCharacters) => {

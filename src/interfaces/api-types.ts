@@ -81,4 +81,4 @@ export const endpoints: Endpoints = {
   location: '/location/',
 };
 
-export const baseUrl = 'https://rickandmortyapi.com/api/';
+export const baseUrl = 'https://rickandmortyapi.com/api';

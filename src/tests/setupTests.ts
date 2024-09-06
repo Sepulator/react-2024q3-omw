@@ -1,9 +1,10 @@
-import { ReactElement } from 'react';
 import * as matchers from '@testing-library/jest-dom/matchers';
+import userEvent, { UserEvent } from '@testing-library/user-event';
+import { ReactElement } from 'react';
 import { render, RenderOptions, RenderResult } from '@testing-library/react';
 import { expect, vi } from 'vitest';
 
-import userEvent, { UserEvent } from '@testing-library/user-event';
+import { server } from './node';
 import AllProviders from '@/components/all-providers';
 
 type SetupReturn = {
@@ -12,7 +13,20 @@ type SetupReturn = {
 
 expect.extend(matchers);
 
-vi.mock('next/router', () => vi.importActual('next-router-mock'));
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
+
+const mockedRouterPush = vi.fn((url: string) => {
+  const [pathName, searchParams] = url.split('?');
+  window.history.pushState({}, '', `${pathName}${searchParams}`);
+});
+
+vi.mock('next/navigation', () => ({
+  useRouter: () => ({ push: mockedRouterPush }),
+  usePathname: () => window.location.pathname,
+  useSearchParams: () => new URLSearchParams(window.location.search),
+}));
 
 export function setup(
   ui: ReactElement,

@@ -1,12 +1,12 @@
 import { screen } from '@testing-library/react';
 
-import { CharactersError, mockCharacters } from '@/tests/mocks';
+import { CharactersError, mockCharacters } from '@/tests/mocks/mocks';
 import { setup } from '@/tests/setupTests';
-import Home from '@/pages';
+import CardList from '@/components/card-list';
 
 describe('Card list component', () => {
   const renderer = (data = mockCharacters) => {
-    return setup(<Home data={data} />);
+    return setup(<CardList data={data} />);
   };
 
   const ALL_CARDS = 2;

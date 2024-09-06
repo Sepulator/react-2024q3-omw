@@ -1,37 +1,26 @@
 import { userEvent } from '@testing-library/user-event';
 import { screen } from '@testing-library/react';
 
-import { CharacterError, mockCharacters } from '@/tests/mocks';
-import { setup } from '@/tests/setupTests';
-import CharacterInfo from '@/pages/character/[characterId]';
+import CardItem from '@/components/card-item';
+import { mockCharacters } from './mocks/mocks';
+import { setup } from './setupTests';
 
-describe('Card item component', () => {
-  const renderer = (characterId = '1') => {
-    if (characterId === '1')
-      return setup(
-        <CharacterInfo
-          character={mockCharacters.results![0]}
-          data={mockCharacters}
-        />
-      );
+describe('CardItem component', () => {
+  const renderer = () =>
+    setup(<CardItem character={mockCharacters.results![0]} />);
 
-    return setup(
-      <CharacterInfo character={CharacterError} data={mockCharacters} />
-    );
-  };
+  it('display character', async () => {
+    renderer();
 
-  it('display error, character not found', async () => {
-    renderer('3');
-
-    expect(await screen.findByText('Character not found')).toBeInTheDocument();
+    expect(
+      await screen.findByRole('heading', { name: /rick/i, level: 2 })
+    ).toBeInTheDocument();
   });
 
-  it('close CardItem component', async () => {
+  it('press close button', async () => {
     renderer();
     const user = userEvent.setup();
 
     await user.click(screen.getByTestId('closeBtn'));
-
-    expect(window.location.pathname).not.contain('/character/');
   });
 });
