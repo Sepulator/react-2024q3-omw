@@ -14,7 +14,7 @@ export default function Theme() {
         title="Switch between dark and light mode"
         type="button"
         data-testid="themBtn"
-        className={`btn ${s.btnTheme}`}
+        className={`${s.btnTheme}`}
         aria-label={themeType}
         onClick={() => toggleTheme(themeType)}
       >

@@ -5,6 +5,8 @@ import { Inter } from 'next/font/google';
 
 import '../styles/globals.css';
 import AllProviders from '@/components/all-providers';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
 
 interface Props {
   children: ReactNode;
@@ -24,7 +26,11 @@ export default function RootLayout({ children }: Props) {
   return (
     <html lang="en" className={inter.className}>
       <body>
-        <AllProviders>{children}</AllProviders>
+        <AllProviders>
+          <Header />
+          <main className="container main">{children}</main>
+          <Footer />
+        </AllProviders>
       </body>
     </html>
   );
