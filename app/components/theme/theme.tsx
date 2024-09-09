@@ -1,8 +1,5 @@
 import { useTheme } from '@/context/context';
 
-import SunLogo from '@assets/sun.svg';
-import MoonLogo from '@assets/moon.svg';
-
 export function Theme() {
   const { themeType, toggleTheme } = useTheme();
 
@@ -17,9 +14,19 @@ export function Theme() {
         onClick={() => toggleTheme(themeType)}
       >
         {themeType === 'dark' ? (
-          <SunLogo className="logo logo-theme" data-testid="sunLogo" />
+          <img
+            src="./sun.svg"
+            alt=""
+            className="logo logo-theme"
+            data-testid="sunLogo"
+          />
         ) : (
-          <MoonLogo className="logo logo-theme" data-testid="moonLogo" />
+          <img
+            src="./moon.svg"
+            alt=""
+            className="logo logo-theme"
+            data-testid="moonLogo"
+          />
         )}
       </button>
     </div>

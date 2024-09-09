@@ -72,10 +72,18 @@ body {
   background-color: var(--bg);
 }
 
-main {
+.main {
+  position: relative;
   min-height: calc(100vh - 9.6rem * 2);
   padding: 6.4rem 0;
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 9rem;
+}
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
 }
 
 a {

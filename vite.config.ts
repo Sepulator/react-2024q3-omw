@@ -1,25 +1,21 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import path from 'path';
-import react from '@vitejs/plugin-react';
-import eslint from 'vite-plugin-eslint2';
-import magicalSvg from 'vite-plugin-magical-svg';
+import { vitePlugin as remix } from '@remix-run/dev';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-      '@assets': path.resolve(__dirname, './src/assets'),
-      '@components': path.resolve(__dirname, './src/components'),
+      '@': path.resolve(__dirname, './app'),
+      '@assets': path.resolve(__dirname, './app/assets'),
+      '@components': path.resolve(__dirname, './app/components'),
     },
   },
   plugins: [
-    react(),
-    eslint({
-      fix: true,
+    remix({
+      ignoredRouteFiles: ['**/*.css'],
     }),
-    magicalSvg({ target: 'react' }),
   ],
   test: {
     globals: true,
