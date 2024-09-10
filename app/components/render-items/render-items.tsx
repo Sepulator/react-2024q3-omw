@@ -1,5 +1,5 @@
 import { ChangeEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from '@remix-run/react';
 
 import { Character } from '@/interfaces/api-types';
 import {
@@ -8,6 +8,7 @@ import {
   selectCharacters,
 } from '@/services/characterSlice';
 import { useAppDispatch, useAppSelector } from '@/services/hooks';
+import '../card-item/card-item.css';
 
 type Props = {
   characters: Array<Character>;

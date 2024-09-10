@@ -1,7 +1,7 @@
 import { Character, Endpoints, Info } from '@/interfaces/api-types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-export const endpoints: Endpoints = {
+const endpoints: Endpoints = {
   character: '/character/',
   episode: '/episode/',
   location: '/location/',

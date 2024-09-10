@@ -1,9 +1,6 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from '@remix-run/react';
 
 import './pagination-block.css';
-import ChevronLeft from '@assets/chevron-left.svg';
-import ChevronRight from '@assets/chevron-right.svg';
-
 type Props = {
   info: {
     count: number;
@@ -31,7 +28,7 @@ export function PaginationBlock({ info }: Props) {
         disabled={!prev}
         onClick={() => prev && navigateToUrl(prev)}
       >
-        <ChevronLeft className="logo" />
+        <img src="/chevron-left.svg" alt="" className="logo" />
       </button>
       <button
         className="btn"
@@ -40,7 +37,7 @@ export function PaginationBlock({ info }: Props) {
         data-testid="btnNext"
         onClick={() => next && navigateToUrl(next)}
       >
-        <ChevronRight className="logo" />
+        <img src="/chevron-right.svg" alt="" className="logo" />
       </button>
     </div>
   );

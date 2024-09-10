@@ -1,16 +1,16 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import './card-item.css';
-import Close from '@assets/x-mark.svg';
-import { LoaderSpinner, RenderError } from '../card-list/card-list';
-import { useGetCharacterQuery } from '@/services/rickandmorty-api';
+import { Character } from '@/interfaces/api-types';
+import { RenderError } from '../card-list/card-list';
 
-export function CardItem() {
+type Props = {
+  data: Character;
+};
+
+export function CardItem({ data }: Props) {
   const navigate = useNavigate();
-  const { characterId = '1' } = useParams();
-  const { data, isLoading, isFetching } = useGetCharacterQuery(characterId);
 
-  if (isFetching || isLoading) return <LoaderSpinner />;
   if (!data) return <RenderError error="Character not found" />;
 
   const { image, name, status, gender, species, location } = data;
@@ -41,7 +41,7 @@ export function CardItem() {
           type="button"
           onClick={() => navigate('/')}
         >
-          <Close className="logo logo-close" />
+          <img src="/x-mark.svg" alt="" className="logo logo-close" />
         </button>
       </div>
     </div>

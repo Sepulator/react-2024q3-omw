@@ -15,14 +15,14 @@ export function Theme() {
       >
         {themeType === 'dark' ? (
           <img
-            src="./sun.svg"
+            src="/sun.svg"
             alt=""
             className="logo logo-theme"
             data-testid="sunLogo"
           />
         ) : (
           <img
-            src="./moon.svg"
+            src="/moon.svg"
             alt=""
             className="logo logo-theme"
             data-testid="moonLogo"

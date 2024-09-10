@@ -73,3 +73,11 @@ export interface Info<T> {
   results?: T;
   error?: string;
 }
+
+export const endpoints: Endpoints = {
+  character: '/character/',
+  episode: '/episode/',
+  location: '/location/',
+};
+
+export const baseUrl = 'https://rickandmortyapi.com/api';

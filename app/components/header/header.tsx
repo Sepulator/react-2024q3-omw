@@ -7,7 +7,7 @@ export function Header() {
     <header>
       <div>
         <a href="https://rickandmortyapi.com/">
-          <img src="./logo.svg" alt="" className="logo" />
+          <img src="/logo.svg" alt="" className="logo" />
         </a>
       </div>
       <SearchForm />
