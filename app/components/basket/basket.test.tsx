@@ -1,16 +1,24 @@
+import { json } from '@remix-run/node';
 import { screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { createRemixStub } from '@remix-run/testing';
 
+import App from '@/root';
+import { mockCharacters } from '@/tests/mocks';
 import { setup } from '@/tests/setupTests';
-import CardList from '../card-list';
 
 describe('Basket component', () => {
+  const RemixSub = createRemixStub([
+    {
+      path: '/',
+      Component: App,
+      loader() {
+        return json({ data: mockCharacters });
+      },
+    },
+  ]);
+
   const renderer = () => {
-    return setup(
-      <BrowserRouter>
-        <CardList />
-      </BrowserRouter>
-    );
+    return setup(<RemixSub />);
   };
 
   beforeAll(() => {

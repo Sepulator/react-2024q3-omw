@@ -1,11 +1,20 @@
-import { router } from '@/main';
-import { setup } from '@/tests/setupTests';
+import { createRemixStub } from '@remix-run/testing';
 import { screen } from '@testing-library/react';
-import { RouterProvider } from 'react-router-dom';
+
+import { setup } from '@/tests/setupTests';
+import App, { loader } from '@/root';
 
 describe('Card list component', () => {
+  const RemixSub = createRemixStub([
+    {
+      path: '/',
+      Component: App,
+      loader,
+    },
+  ]);
+
   const renderer = () => {
-    return setup(<RouterProvider router={router} />);
+    return setup(<RemixSub />);
   };
 
   const ALL_CARDS = 2;
@@ -22,8 +31,8 @@ describe('Card list component', () => {
   it('display card with Rick Sanchez', async () => {
     const { user } = renderer();
 
-    await user.type(screen.getByRole('textbox'), QUERY);
-    await user.click(screen.getByRole('button', { name: 'search' }));
+    await user.type(await screen.findByRole('textbox'), QUERY);
+    await user.click(await screen.findByRole('button', { name: 'search' }));
 
     const cards = await screen.findAllByRole('checkbox');
     expect(cards.length).toBe(ONE_CARDS);
@@ -33,8 +42,8 @@ describe('Card list component', () => {
   it('display not found results', async () => {
     const { user } = renderer();
 
-    await user.type(screen.getByRole('textbox'), 'not a Rick');
-    await user.click(screen.getByRole('button', { name: 'search' }));
+    await user.type(await screen.findByRole('textbox'), 'not a Rick');
+    await user.click(await screen.findByRole('button', { name: 'search' }));
 
     expect(
       await screen.findByText(/There is nothing here/)

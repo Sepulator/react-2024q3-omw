@@ -1,13 +1,19 @@
 /* eslint-disable react-refresh/only-export-components */
-import type { LoaderFunctionArgs } from '@remix-run/node';
+import type { LoaderFunctionArgs, TypedResponse } from '@remix-run/node';
 import { json, useLoaderData } from '@remix-run/react';
 import { useNavigation } from '@remix-run/react';
 
 import CardItem from '@/components/card-item';
-import { baseUrl, Character, endpoints } from '@/interfaces/api-types';
 import LoaderSpinner from '@/components/loader-spinner';
+import { baseUrl, Character, endpoints } from '@/interfaces/api-types';
 
-export const loader = async ({ params }: LoaderFunctionArgs) => {
+export const loader = async ({
+  params,
+}: LoaderFunctionArgs): Promise<
+  TypedResponse<{
+    data: Character;
+  }>
+> => {
   const { characterId = '1' } = params;
   const res = await fetch(`${baseUrl}${endpoints.character}${characterId}`);
   const data = (await res.json()) as Character;

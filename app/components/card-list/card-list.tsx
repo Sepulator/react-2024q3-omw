@@ -1,6 +1,5 @@
 import { useLocation, useNavigation } from '@remix-run/react';
 
-import './card-list.css';
 import Basket from '@components/basket';
 import RenderItems from '@components/render-items';
 import PaginationBlock from '@/components/pagination-block';

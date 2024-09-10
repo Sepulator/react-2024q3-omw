@@ -2,6 +2,7 @@
 import { defineConfig } from 'vite';
 import path from 'path';
 import { vitePlugin as remix } from '@remix-run/dev';
+import reactVitest from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,13 +14,15 @@ export default defineConfig({
     },
   },
   plugins: [
-    remix({
-      ignoredRouteFiles: ['**/*.css'],
-    }),
+    process.env.VITEST
+      ? reactVitest()
+      : remix({
+          ignoredRouteFiles: ['**/*.css'],
+        }),
   ],
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['./src/tests/setupTests.ts'],
+    setupFiles: ['./app/tests/setupTests.ts'],
   },
 });

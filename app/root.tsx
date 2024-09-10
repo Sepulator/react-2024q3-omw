@@ -3,6 +3,7 @@ import type {
   LinksFunction,
   LoaderFunctionArgs,
   MetaFunction,
+  TypedResponse,
 } from '@remix-run/node';
 import {
   Links,
@@ -19,8 +20,8 @@ import './index.css';
 import AllProviders from './components/all-providers';
 import Header from './components/header';
 import Footer from './components/footer';
-import { baseUrl, Character, endpoints, Info } from './interfaces/api-types';
 import CardList from './components/card-list';
+import { baseUrl, Character, endpoints, Info } from './interfaces/api-types';
 
 export const meta: MetaFunction = () => [
   {
@@ -54,7 +55,13 @@ export function Layout({ children }: { children: ReactNode }) {
   );
 }
 
-export const loader = async ({ request }: LoaderFunctionArgs) => {
+export const loader = async ({
+  request,
+}: LoaderFunctionArgs): Promise<
+  TypedResponse<{
+    data: Info<Character[]>;
+  }>
+> => {
   const url = new URL(request.url);
   const name = url.searchParams.get('name') || '';
   const page = url.searchParams.get('page') || '1';

@@ -1,13 +1,21 @@
-import { setup } from '@/tests/setupTests';
-import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { RouterProvider } from 'react-router-dom';
+import { screen } from '@testing-library/react';
+import { createRemixStub } from '@remix-run/testing';
 
-import { router } from '@/main';
+import App, { loader } from '@/root';
+import { setup } from '@/tests/setupTests';
 
 describe('Pagination Block component', () => {
+  const RemixSub = createRemixStub([
+    {
+      path: '/',
+      Component: App,
+      loader,
+    },
+  ]);
+
   const renderer = () => {
-    return setup(<RouterProvider router={router} />);
+    return setup(<RemixSub />);
   };
 
   it('check buttons enable & disable depending on page status', async () => {

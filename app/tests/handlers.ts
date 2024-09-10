@@ -7,7 +7,10 @@ export const handlers = [
     const name = url.searchParams.get('name');
     const page = url.searchParams.get('page');
 
-    if (name && name !== 'Rick') return HttpResponse.error();
+    if (name && name !== 'Rick')
+      return HttpResponse.json({
+        error: 'There is nothing here',
+      });
 
     if (name === 'Rick')
       return HttpResponse.json({
