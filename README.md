@@ -1,4 +1,4 @@
-# Next.js Pages Api Integration.
+# Next.js App Router Api Integration.
 
 [Task link](https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/tasks/nextjs-ssr-ssg.md)
 
