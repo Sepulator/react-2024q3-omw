@@ -1,4 +1,4 @@
-# Redux. Redux Toolkit, RTK Query. Context api
+# Remix Integration
 
 [Task link](https://github.com/rolling-scopes-school/tasks/blob/master/react/modules/tasks/nextjs-ssr-ssg.md)
 
