@@ -1,6 +1,7 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vite';
 import path from 'path';
+import { defineConfig } from 'vite';
+import { coverageConfigDefaults } from 'vitest/config';
 import { vitePlugin as remix } from '@remix-run/dev';
 import reactVitest from '@vitejs/plugin-react';
 
@@ -24,5 +25,8 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./app/tests/setupTests.ts'],
+    coverage: {
+      exclude: ['build/**', ...coverageConfigDefaults.exclude],
+    },
   },
 });

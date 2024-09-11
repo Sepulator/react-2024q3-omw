@@ -11,7 +11,7 @@ type Props = {
 export function CardItem({ data }: Props) {
   const navigate = useNavigate();
 
-  if (!data) return <RenderError error="Character not found" />;
+  if (data.error) return <RenderError error="Character not found" />;
 
   const { image, name, status, gender, species, location } = data;
 

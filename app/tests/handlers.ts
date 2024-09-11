@@ -38,7 +38,10 @@ export const handlers = [
   }),
 
   http.get('https://rickandmortyapi.com/api/character/:id', ({ params }) => {
-    if (params.id === '3') return HttpResponse.error();
+    if (params.id === '3')
+      return HttpResponse.json({
+        error: 'Character not found',
+      });
 
     return HttpResponse.json(mockCharacters.results![0]);
   }),

@@ -26,3 +26,9 @@ dist-ssr
 
 # Tests
 coverage
+
+# Remix
+build
+
+# Next
+.next
